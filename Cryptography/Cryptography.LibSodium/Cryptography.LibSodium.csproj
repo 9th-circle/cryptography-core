@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
+    <PackageReference Include="Sodium.Core" Version="1.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Boxes\" />
+    <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

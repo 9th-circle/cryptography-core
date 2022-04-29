@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.218
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography.Core", "Cryptography.Core\Cryptography.Core.csproj", "{8847B68B-74A7-4B7A-8FDD-803F7C7B96C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography.Core", "Cryptography.Core\Cryptography.Core.csproj", "{8847B68B-74A7-4B7A-8FDD-803F7C7B96C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography.Interfaces", "Cryptography.Interfaces\Cryptography.Interfaces.csproj", "{E9789D76-A36C-4D47-ABB8-0FFCEBB9DCB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography.Interfaces", "Cryptography.Interfaces\Cryptography.Interfaces.csproj", "{E9789D76-A36C-4D47-ABB8-0FFCEBB9DCB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography.Tests", "Cryptography.Tests\Cryptography.Tests.csproj", "{405763F2-6A01-4627-87BC-6E36CCA705A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography.Tests", "Cryptography.Tests\Cryptography.Tests.csproj", "{405763F2-6A01-4627-87BC-6E36CCA705A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography.SystemCryptography", "Cryptography.SystemCryptography\Cryptography.SystemCryptography.csproj", "{945BF1CF-F3E5-4A02-8CA0-F6D0979E0BFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography.LibSodium", "Cryptography.LibSodium\Cryptography.LibSodium.csproj", "{63CDC401-7D40-4B3F-AA53-4E26695C6E9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{405763F2-6A01-4627-87BC-6E36CCA705A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{405763F2-6A01-4627-87BC-6E36CCA705A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{405763F2-6A01-4627-87BC-6E36CCA705A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{945BF1CF-F3E5-4A02-8CA0-F6D0979E0BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945BF1CF-F3E5-4A02-8CA0-F6D0979E0BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945BF1CF-F3E5-4A02-8CA0-F6D0979E0BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945BF1CF-F3E5-4A02-8CA0-F6D0979E0BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63CDC401-7D40-4B3F-AA53-4E26695C6E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63CDC401-7D40-4B3F-AA53-4E26695C6E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63CDC401-7D40-4B3F-AA53-4E26695C6E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63CDC401-7D40-4B3F-AA53-4E26695C6E9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
