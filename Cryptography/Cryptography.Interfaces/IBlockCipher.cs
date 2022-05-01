@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
+    public enum BlockCipherMode
+    {
+        CTR,
+        CBC,
+        ECB,
+        GCM,
+        CCM,
+        SIV,
+        GCM_SIV,
+        PCBC,
+        CFB,
+        OFB
+    }
     public interface IBlockCipher : IPrimitive
     {
+        BlockCipherMode mode { get; }
     }
 }

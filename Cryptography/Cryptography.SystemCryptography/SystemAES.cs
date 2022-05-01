@@ -1,6 +1,6 @@
 ﻿namespace Cryptography.SystemCryptography
 {
-    public class DSA
+    public class SystemAES
     {
         
     }
