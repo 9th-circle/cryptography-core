@@ -19,7 +19,7 @@ namespace Cryptography.Interfaces
         CFB,
         OFB
     }
-    public interface IBlockCipher : IPrimitive
+    public interface IBlockCipher : ISymmetricCipher
     {
         BlockCipherMode mode { get; }
     }
