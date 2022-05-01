@@ -45,6 +45,21 @@ namespace Cryptography.Tests
 
             doCrossCheck(a, b, Encoding.UTF8.GetBytes(testData));
         }
+        [Theory]
+        [InlineData("test data")]
+        [InlineData("some other data")]
+        [InlineData("11111111111222222222222222222233333333333333344444444444445555555555555")]
+        public void notEqual(string testData)
+        {
+            var a = new SodiumSHA512();
+            var b = new SodiumSHA256();
+
+            doNotEqual(a, b, Encoding.UTF8.GetBytes(testData));
+        }
+        void doNotEqual(Interfaces.IHash a, Interfaces.IHash b, byte[] data)
+        {
+            Assert.NotEqual(a.hash(data), b.hash(data));
+        }
         void doCrossCheck(Interfaces.IHash a, Interfaces.IHash b, byte[] data)
         {
             Assert.Equal(a.hash(data), b.hash(data));
