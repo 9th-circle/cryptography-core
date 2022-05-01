@@ -7,17 +7,43 @@ namespace Cryptography.SystemCryptography
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()
         {
-            var dsa = new DSACryptoServiceProvider();
+            var param = new CspParameters();
+            param.Flags = CspProviderFlags.UseArchivableKey;
 
-            return (null, null);
+            var dsa = new DSACryptoServiceProvider(param);
+            dsa.PersistKeyInCsp = false;
+
+            return (dsa.ExportSubjectPublicKeyInfo(), dsa.ExportPkcs8PrivateKey());
         }
         public byte[] sign(byte[] data, byte[] privateKey)
         {
-            return null;
+            try
+            {
+                var dsa = new DSACryptoServiceProvider();
+                dsa.PersistKeyInCsp = false;
+                int read;
+                dsa.ImportPkcs8PrivateKey(privateKey, out read);
+                return dsa.SignData(data);
+            }
+            catch
+            {
+                return null;
+            }
         }
-        public bool signatureIsValid(byte[] data, byte[] publicKey)
+        public bool signatureIsValid(byte[] data, byte[] publicKey, byte[] signature)
         {
-            return false;
+            try
+            {
+                var dsa = new DSACryptoServiceProvider();
+                dsa.PersistKeyInCsp = false;
+                int read;
+                dsa.ImportSubjectPublicKeyInfo(publicKey, out read);
+                return dsa.VerifyData(data, signature);
+            }
+            catch
+            {
+                return false;
+            }
         }
         public string primitiveName => "DSA";
         public string primitiveVariation => null;

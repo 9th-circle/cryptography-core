@@ -4,6 +4,6 @@
     {
         (byte[] publicKey, byte[] privateKey) generateKeyPair();
         byte[] sign(byte[] data, byte[] privateKey);
-        bool signatureIsValid(byte[] data, byte[] publicKey);
+        bool signatureIsValid(byte[] data, byte[] publicKey, byte[] signature);
     }
 }

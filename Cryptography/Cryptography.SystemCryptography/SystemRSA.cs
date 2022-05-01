@@ -10,6 +10,7 @@ namespace Cryptography.SystemCryptography
             param.Flags = CspProviderFlags.UseArchivableKey;
 
             var rsa = new RSACryptoServiceProvider(param);
+            rsa.PersistKeyInCsp = false;
 
             return (rsa.ExportRSAPublicKey(), rsa.ExportRSAPrivateKey());
         }
@@ -18,6 +19,7 @@ namespace Cryptography.SystemCryptography
             try
             {
                 var rsa = new RSACryptoServiceProvider();
+                rsa.PersistKeyInCsp = false;
                 int read;
                 rsa.ImportRSAPublicKey(publicKey, out read);
                 return rsa.Encrypt(data, true);
@@ -32,6 +34,7 @@ namespace Cryptography.SystemCryptography
             try
             {
                 var rsa = new RSACryptoServiceProvider();
+                rsa.PersistKeyInCsp = false;
                 int read;
                 rsa.ImportRSAPrivateKey(privateKey, out read);
                 return rsa.Decrypt(data, true);
