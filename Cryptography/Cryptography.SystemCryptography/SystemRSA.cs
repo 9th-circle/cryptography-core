@@ -26,7 +26,7 @@ namespace Cryptography.SystemCryptography
             }
             catch
             {
-                return null;
+                return null;    //do not propagate any clues about why it failed
             }
         }
         public byte[] decrypt(byte[] data, byte[] privateKey)
@@ -41,7 +41,7 @@ namespace Cryptography.SystemCryptography
             }
             catch
             {
-                return null;
+                return null;    //do not propagate any clues about why it failed
             }
         }
         public string primitiveName => "RSA";

@@ -22,31 +22,44 @@ namespace Cryptography.SystemCryptography
         }
         public byte[] encrypt(byte[] data, byte[] key, byte[] nonce)
         {
-            var input = new MemoryStream(data);
-            var output = new MemoryStream();
-            var aes = new AesManaged();
-            var e = aes.CreateEncryptor();
-
-            using (CryptoStream cs = new CryptoStream(input, e, CryptoStreamMode.Write))
+            try
             {
-                using (StreamWriter sw = new StreamWriter(cs))
-                    sw.Write(data);
-                return output.ToArray();
+                var input = new MemoryStream(data);
+                var output = new MemoryStream();
+                var aes = new AesManaged();
+                var e = aes.CreateEncryptor();
+
+                using (CryptoStream cs = new CryptoStream(input, e, CryptoStreamMode.Write))
+                {
+                    using (StreamWriter sw = new StreamWriter(cs))
+                        sw.Write(data);
+                    return output.ToArray();
+                }
             }
-            
+            catch
+            {
+                return null;    //do not propagate any clues about why it failed
+            }
         }
         public byte[] decrypt(byte[] data, byte[] key, byte[] nonce)
         {
-            var input = new MemoryStream(data);
-            var output = new MemoryStream();
-            var aes = new AesManaged();
-            var d = aes.CreateDecryptor();
-
-            using (CryptoStream cs = new CryptoStream(input, d, CryptoStreamMode.Read))
+            try
             {
-                using (StreamWriter sw = new StreamWriter(cs))
-                    sw.Write(data);
-                return output.ToArray();
+                var input = new MemoryStream(data);
+                var output = new MemoryStream();
+                var aes = new AesManaged();
+                var d = aes.CreateDecryptor();
+
+                using (CryptoStream cs = new CryptoStream(input, d, CryptoStreamMode.Read))
+                {
+                    using (StreamWriter sw = new StreamWriter(cs))
+                        sw.Write(data);
+                    return output.ToArray();
+                }
+            }
+            catch
+            {
+                return null;    //do not propagate any clues about why it failed
             }
         }
         public string primitiveName => "AES";
