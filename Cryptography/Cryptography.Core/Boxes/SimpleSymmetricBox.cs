@@ -16,7 +16,7 @@ namespace Cryptography.Core.Boxes
         public byte[] encrypt(byte[] data, byte[] key) { return null; }
         public byte[] decrypt(byte[] data, byte[] key)
         {
-            KeyPacker p = new KeyPacker(key);
+            IKeyPacker p = new KeyPacker(key);
             var symmetricKey = p.unPackKey();
             var macKey = p.unPackKey();
 

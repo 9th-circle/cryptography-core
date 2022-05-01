@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cryptography.Interfaces;
 
 namespace Cryptography.Core.Boxes
 {
-    class KeyPacker
+    class KeyPacker : IKeyPacker
     {
         public KeyPacker()
         {
@@ -20,7 +21,7 @@ namespace Cryptography.Core.Boxes
         }
         public byte[] unPackKey()
         {
-
+            return null;
         }
         public byte[] getOutput()
         {
