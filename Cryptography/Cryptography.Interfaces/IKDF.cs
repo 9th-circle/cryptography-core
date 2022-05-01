@@ -8,6 +8,8 @@ namespace Cryptography.Interfaces
 {
     public interface IKDF : IPrimitive
     {
-        byte[] generate(byte[] input);
+        byte[] generateSalt();
+        byte[] generate(byte[] input, byte[] salt);
+        bool valid(byte[] data, byte[] hash);
     }
 }

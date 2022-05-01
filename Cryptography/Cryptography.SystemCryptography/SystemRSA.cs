@@ -1,7 +1,10 @@
-﻿namespace Cryptography.SystemCryptography
+﻿using System.Security.Cryptography;
+
+namespace Cryptography.SystemCryptography
 {
-    public class SystemRSA
+    public class SystemRSA : Interfaces.IAsymmetricCipher
     {
-        
+        RSA rsa = new RSACryptoServiceProvider();
+
     }
 }

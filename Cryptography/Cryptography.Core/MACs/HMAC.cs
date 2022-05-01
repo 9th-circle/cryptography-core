@@ -24,7 +24,7 @@ namespace Cryptography.Core.MACs
             w.Write(input);
             return hash.hash(m.ToArray());
         }
-        public string primitiveName => "MAC-" + hash.primitiveName;
+        public string primitiveName => "HMAC-" + hash.primitiveName;
         public string primitiveVariation => null;
         public string implementationName => "Cryptography.Core";
     }

@@ -1,6 +1,6 @@
 ﻿namespace Cryptography.SystemCryptography
 {
-    public class SystemDSA
+    public class SystemDSA : Interfaces.ISignatureCipher
     {
         
     }
