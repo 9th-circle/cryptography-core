@@ -12,6 +12,6 @@ namespace Cryptography.SystemCryptography
         }
         public string primitiveName => "HMAC-SHA-384";
         public string primitiveVariation => null;
-        public string implementationName => "System.Cryptography";
+        public string implementationName => "System.Security.Cryptography";
     }
 }

@@ -16,6 +16,6 @@ namespace Cryptography.SystemCryptography
         }
         public string primitiveName => "MD5";
         public string primitiveVariation => null;
-        public string implementationName => "System.Cryptography";
+        public string implementationName => "System.Security.Cryptography";
     }
 }

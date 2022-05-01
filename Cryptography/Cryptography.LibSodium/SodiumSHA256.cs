@@ -6,7 +6,7 @@
         {
             return Sodium.CryptoHash.Sha256(input);
         }
-        public string primitiveName => "SHA256";
+        public string primitiveName => "SHA-256";
         public string primitiveVariation => null;
         public string implementationName => "LibSodium";
     }

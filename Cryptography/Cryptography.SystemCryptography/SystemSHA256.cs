@@ -11,6 +11,6 @@ namespace Cryptography.SystemCryptography
         }
         public string primitiveName => "SHA-256";
         public string primitiveVariation => null;
-        public string implementationName => "System.Cryptography";
+        public string implementationName => "System.Security.Cryptography";
     }
 }
