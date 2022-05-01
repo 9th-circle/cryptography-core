@@ -16,7 +16,7 @@ namespace Cryptography.LibSodium
         {
             return Sodium.PasswordHash.ScryptHashStringVerify(hash, data);
         }
-        public string primitiveName => "Scrypt";
+        public string primitiveName => "scrypt";
         public string primitiveVariation => "outputLength=32";
         public string implementationName => "LibSodium";
     }

@@ -12,8 +12,8 @@ namespace Cryptography.LibSodium
         {
             return Sodium.CryptoHash.Hash(input);
         }
-        public string primitiveName => "???";
-        public string primitiveVariation => "???";
+        public string primitiveName => "SHA-512";   //todo: check if this is correct
+        public string primitiveVariation => null;
         public string implementationName => "LibSodium";
     }
 }

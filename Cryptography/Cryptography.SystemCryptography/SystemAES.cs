@@ -1,6 +1,8 @@
-﻿namespace Cryptography.SystemCryptography
+﻿using Cryptography.Interfaces;
+
+namespace Cryptography.SystemCryptography
 {
-    public class SystemAES
+    public class SystemAES : ISymmetricCipher
     {
         
     }
