@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface IMAC : IPrimitive
+    public interface IBlockCipher : IPrimitive
     {
-        byte[] generate(byte[] input, byte[] key);
     }
 }

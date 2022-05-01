@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface IHash
+    public interface IHash : IPrimitive
     {
+        byte[] hash(byte[] input);
     }
 }

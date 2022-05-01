@@ -1,6 +1,6 @@
 ﻿namespace Cryptography.SystemCryptography
 {
-    public class AES_CBC
+    public class RSA
     {
         
     }

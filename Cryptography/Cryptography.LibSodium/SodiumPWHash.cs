@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cryptography.LibSodium
 {
-    class PWHash
+    class SodiumPWHash
     {
     }
 }

@@ -8,5 +8,11 @@ namespace Cryptography.Interfaces
 {
     public interface IAsymmetricBox
     {
+        (byte[] publicKey, byte[] privateKey) generateKeyPair();
+        byte[] encrypt(byte[] data, byte[] publicKey);
+        byte[] decrypt(byte[] data, byte[] privateKey);
+        string underlyingSymmetricPrimitiveName { get; }
+        string underlyingAsymmetricPrimitiveName { get; }
+        string underlyingMACPrimitiveName { get; }
     }
 }

@@ -8,5 +8,12 @@ namespace Cryptography.Interfaces
 {
     public interface ISymmetricBox
     {
+        byte[] generateKey();
+        byte[] encrypt(byte[] data, byte[] key);
+        byte[] decrypt(byte[] data, byte[] key);
+
+
+        string underlyingSymmetricPrimitiveName { get; }
+        string underlyingMACPrimitiveName { get; }
     }
 }

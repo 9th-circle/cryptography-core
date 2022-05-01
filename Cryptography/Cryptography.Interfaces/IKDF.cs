@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface IKDF
+    public interface IKDF : IPrimitive
     {
+        byte[] generate(byte[] input);
     }
 }
