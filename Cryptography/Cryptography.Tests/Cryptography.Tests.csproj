@@ -19,4 +19,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
+    <ProjectReference Include="..\Cryptography.LibSodium\Cryptography.LibSodium.csproj" />
+    <ProjectReference Include="..\Cryptography.SystemCryptography\Cryptography.SystemCryptography.csproj" />
+  </ItemGroup>
+
 </Project>

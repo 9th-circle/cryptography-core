@@ -1,6 +1,6 @@
 ﻿namespace Cryptography.LibSodium
 {
-    class SodiumSHA512 : Interfaces.IHash
+    public class SodiumSHA512 : Interfaces.IHash
     {
         public byte[] hash(byte[] input)
         {
