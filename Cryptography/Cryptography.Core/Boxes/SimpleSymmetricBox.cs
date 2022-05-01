@@ -14,9 +14,16 @@ namespace Cryptography.Core.Boxes
         
         public byte[] generateKey() { return null; }
         public byte[] encrypt(byte[] data, byte[] key) { return null; }
-        public byte[] decrypt(byte[] data, byte[] key) { return null; }
+        public byte[] decrypt(byte[] data, byte[] key)
+        {
+            KeyPacker p = new KeyPacker(key);
+            var symmetricKey = p.unPackKey();
+            var macKey = p.unPackKey();
+
+            return null;
+        }
         
-        public string underlyingSymmetricPrimitiveName { get; }
-        public string underlyingMACPrimitiveName { get; }
+        public string underlyingSymmetricPrimitiveName => symmetric.primitiveName;
+        public string underlyingMACPrimitiveName => mac.primitiveName;
     }
 }

@@ -8,8 +8,4 @@
     <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Boxes\" />
-  </ItemGroup>
-
 </Project>
