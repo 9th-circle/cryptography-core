@@ -7,7 +7,7 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core.Boxes
 {
-    class KeyPacker : IKeyPacker
+    class PrefixKeyPacker : IKeyPacker
     {
         List<byte> contents = new List<byte>();
         public void load(byte[] data)
