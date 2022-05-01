@@ -8,6 +8,7 @@ namespace Cryptography.Interfaces
 {
     public interface IKeyPacker
     {
+        void load(byte[] data);
         void packKey(byte[] data);
         byte[] unPackKey();
         byte[] getOutput();

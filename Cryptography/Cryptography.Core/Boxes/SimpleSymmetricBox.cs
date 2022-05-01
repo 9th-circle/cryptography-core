@@ -6,19 +6,21 @@ namespace Cryptography.Core.Boxes
     {
         IMAC mac;
         ISymmetricCipher symmetric;
-        public SimpleSymmetricBox(IMAC mac, ISymmetricCipher symmetric)
+        IKeyPacker keyPacker;
+        public SimpleSymmetricBox(IMAC mac, ISymmetricCipher symmetric, IKeyPacker keyPacker)
         {
             this.mac = mac;
             this.symmetric = symmetric;
+            this.keyPacker = keyPacker;
         }
         
         public byte[] generateKey() { return null; }
         public byte[] encrypt(byte[] data, byte[] key) { return null; }
         public byte[] decrypt(byte[] data, byte[] key)
         {
-            IKeyPacker p = new KeyPacker(key);
-            var symmetricKey = p.unPackKey();
-            var macKey = p.unPackKey();
+            keyPacker.load(key);
+            var symmetricKey = keyPacker.unPackKey();
+            var macKey = keyPacker.unPackKey();
 
             return null;
         }
