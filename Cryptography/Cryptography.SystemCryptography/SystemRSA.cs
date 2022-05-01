@@ -6,19 +6,40 @@ namespace Cryptography.SystemCryptography
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()
         {
-            var rsa = new RSACryptoServiceProvider();
+            var param = new CspParameters();
+            param.Flags = CspProviderFlags.UseArchivableKey;
 
-            return (null, null);
+            var rsa = new RSACryptoServiceProvider(param);
+
+            return (rsa.ExportRSAPublicKey(), rsa.ExportRSAPrivateKey());
         }
         public byte[] encrypt(byte[] data, byte[] publicKey)
         {
-            var rsa = new RSACryptoServiceProvider();
-            return null;
+            try
+            {
+                var rsa = new RSACryptoServiceProvider();
+                int read;
+                rsa.ImportRSAPublicKey(publicKey, out read);
+                return rsa.Encrypt(data, true);
+            }
+            catch
+            {
+                return null;
+            }
         }
         public byte[] decrypt(byte[] data, byte[] privateKey)
         {
-            var rsa = new RSACryptoServiceProvider();
-            return null;
+            try
+            {
+                var rsa = new RSACryptoServiceProvider();
+                int read;
+                rsa.ImportRSAPrivateKey(privateKey, out read);
+                return rsa.Decrypt(data, true);
+            }
+            catch
+            {
+                return null;
+            }
         }
         public string primitiveName => "RSA";
         public string primitiveVariation => null;
