@@ -20,7 +20,7 @@ namespace Cryptography.Core.Boxes
         {
             lock (keyPacker)
             {
-                keyPacker.load(new byte[] { });
+                keyPacker.clear();
                 var symmetricKey = symmetric.generateKey();
                 var symmetricNonce = symmetric.generateNonce();
                 var macKey = symmetric.generateKey();

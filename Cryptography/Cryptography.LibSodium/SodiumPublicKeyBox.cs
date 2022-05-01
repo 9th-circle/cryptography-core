@@ -10,7 +10,7 @@ namespace Cryptography.LibSodium
 {
     class SodiumPublicKeyBox : IAsymmetricBox
     {
-        public (byte[] publicKey, byte[] privateKey) generateKeyPair()
+        public (byte[] senderKey, byte[] receiverKey) generateKeyPair()
         {
             var keys = Sodium.PublicKeyBox.GenerateKeyPair();
             return (keys.PublicKey, keys.PrivateKey);
@@ -19,17 +19,17 @@ namespace Cryptography.LibSodium
         {
             return Sodium.PublicKeyBox.GenerateNonce();
         }
-        public byte[] encrypt(byte[] data, byte[] publicKey, byte[] shared)
+        public byte[] encrypt(byte[] data, byte[] senderKey, byte[] shared)
         {
-            return Sodium.PublicKeyBox.Create(data, shared, null, publicKey);
+            return Sodium.PublicKeyBox.Create(data, shared, null, senderKey);
         }
-        public byte[] decrypt(byte[] data, byte[] privateKey, byte[] shared)
+        public byte[] decrypt(byte[] data, byte[] receiverKey, byte[] shared)
         {
-            return Sodium.PublicKeyBox.Open(data, shared, privateKey, null);
+            return Sodium.PublicKeyBox.Open(data, shared, receiverKey, null);
         }
 
         public string underlyingSymmetricPrimitiveName => "XSalsa20";
-        public string underlyingSignaturePrimitiveName => "Poly1305";
+        public string underlyingMACPrimitiveName => "Poly1305";
         public string underlyingAsymmetricPrimitiveName => "X25519";
     }
 }

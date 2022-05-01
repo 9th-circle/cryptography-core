@@ -10,6 +10,11 @@ namespace Cryptography.Core.Boxes
     class PrefixKeyPacker : IKeyPacker
     {
         List<byte> contents = new List<byte>();
+        public void clear()
+        {
+            lock (contents)
+                contents.Clear();
+        }
         public void load(byte[] data)
         {
             lock (contents)

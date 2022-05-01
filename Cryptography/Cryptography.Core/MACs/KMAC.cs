@@ -17,6 +17,7 @@ namespace Cryptography.Core.MACs
         }
         public byte[] generate(byte[] input, byte[] key)
         {
+            throw new NotImplementedException();
             //todo: actually implement KMAC
             var m = new MemoryStream();
             var w = new BinaryWriter(m);
