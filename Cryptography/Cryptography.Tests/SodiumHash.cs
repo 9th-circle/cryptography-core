@@ -8,6 +8,13 @@ namespace Cryptography.Tests
     public class SodiumHash
     {
         [Fact]
+        public void generic()
+        {
+            var hash = new SodiumGenericHash();
+            var output = hash.generate(Encoding.UTF8.GetBytes("some slightly longer input"), Encoding.UTF8.GetBytes("passwordpassword"));
+            Assert.Equal("cK2fD2HjRSlBxh0zALtECWq39e7XZq72DmY=", Convert.ToBase64String(output));
+        }
+        [Fact]
         public void argonTest()
         {
             SodiumArgonKDF kdf = new SodiumArgonKDF();
