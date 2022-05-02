@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cryptography.SystemCryptography
 {
-    class SystemSHA1 : Interfaces.IHash
+    public class SystemSHA1 : Interfaces.IHash
     {
         SHA1Managed sha = new SHA1Managed();
         public byte[] hash(byte[] input)
