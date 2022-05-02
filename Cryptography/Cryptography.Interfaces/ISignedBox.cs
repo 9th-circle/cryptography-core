@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface ISignedBox
+    public interface ISignedBox : IBox
     {
         (byte[] publicKey, byte[] privateKey) generateKeyPair();
         byte[] generateSharedKey();

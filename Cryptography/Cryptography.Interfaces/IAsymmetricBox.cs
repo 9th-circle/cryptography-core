@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface IAsymmetricBox
+    public interface IAsymmetricBox : IBox
     {
         (byte[] publicKey, byte[] privateKey) generateKeyPair();
         byte[] generateNonce();

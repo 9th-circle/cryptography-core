@@ -1,6 +1,6 @@
 ﻿namespace Cryptography.Interfaces
 {
-    public interface IMacBox
+    public interface IMacBox : IBox
     {
         (byte[] senderKey, byte[] receiverKey) generateKeyPair();
         byte[] generateNonce();
