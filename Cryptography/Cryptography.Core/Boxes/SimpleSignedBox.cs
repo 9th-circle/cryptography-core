@@ -38,10 +38,10 @@ namespace Cryptography.Core.Boxes
                 var key = keyPacker.unPack();
 
                 var ciphertext = symmetric.encrypt(data, key, nonce);
-                var signature = this.signature.sign(ciphertext, privateKey);
+                var signatureData = signature.sign(ciphertext, privateKey);
 
                 keyPacker.clear();
-                keyPacker.pack(signature);
+                keyPacker.pack(signatureData);
                 keyPacker.pack(ciphertext);
 
                 return keyPacker.getOutput();
@@ -55,10 +55,10 @@ namespace Cryptography.Core.Boxes
             var key = keyPacker.unPack();
 
             keyPacker.load(data);
-            var signature = keyPacker.unPack();
+            var signatureData = keyPacker.unPack();
             var ciphertext = keyPacker.unPack();
 
-            if (!this.signature.signatureIsValid(ciphertext, publicKey, signature))
+            if (!signature.signatureIsValid(ciphertext, publicKey, signatureData))
                 return null;
 
             return symmetric.decrypt(ciphertext, key, nonce);
