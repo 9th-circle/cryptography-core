@@ -50,7 +50,6 @@ namespace Cryptography.Core.Boxes
                 var signaturePrivateKey = keyPacker.unPack();
                 var asymPrivateKey = keyPacker.unPack();
 
-
                 keyPacker.load(receiverPublicKey);
                 var signaturePublicKey = keyPacker.unPack();
                 var asymPublicKey = keyPacker.unPack();
