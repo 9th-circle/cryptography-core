@@ -42,16 +42,16 @@ namespace Cryptography.Core.Boxes
             }
         }
 
-        public byte[] encrypt(byte[] data, byte[] privateKey, byte[] publicKey, byte[] shared)
+        public byte[] encrypt(byte[] data, byte[] senderPrivateKey, byte[] receiverPublicKey, byte[] shared)
         {
             lock (keyPacker)
             {
-                keyPacker.load(privateKey);
+                keyPacker.load(senderPrivateKey);
                 var signaturePrivateKey = keyPacker.unPack();
                 var asymPrivateKey = keyPacker.unPack();
 
 
-                keyPacker.load(publicKey);
+                keyPacker.load(receiverPublicKey);
                 var signaturePublicKey = keyPacker.unPack();
                 var asymPublicKey = keyPacker.unPack();
 
@@ -63,28 +63,28 @@ namespace Cryptography.Core.Boxes
                 List<byte> combined = new List<byte>();
                 combined.AddRange(encryptedPackage);
                 combined.AddRange(shared);
-                combined.AddRange(publicKey);
+                combined.AddRange(receiverPublicKey);
                 combined.AddRange(encryptedData);
 
                 keyPacker.clear();
                 keyPacker.pack(signature.sign(combined.ToArray(), signaturePrivateKey));
                 keyPacker.pack(encryptedPackage);
-                keyPacker.pack(publicKey);
+                keyPacker.pack(receiverPublicKey);
                 keyPacker.pack(encryptedData);
 
                 return keyPacker.getOutput();
             }
         }
 
-        public byte[] decrypt(byte[] data, byte[] privateKey, byte[] publicKey, byte[] shared)
+        public byte[] decrypt(byte[] data, byte[] receiverPrivateKey, byte[] senderPublicKey, byte[] shared)
         {
             lock (keyPacker)
             {
-                keyPacker.load(privateKey);
+                keyPacker.load(receiverPrivateKey);
                 var signaturePrivateKey = keyPacker.unPack();
                 var asymPrivateKey = keyPacker.unPack();
                 
-                keyPacker.load(publicKey);
+                keyPacker.load(senderPublicKey);
                 var signaturePublicKey = keyPacker.unPack();
                 var asymPublicKey = keyPacker.unPack();
 
