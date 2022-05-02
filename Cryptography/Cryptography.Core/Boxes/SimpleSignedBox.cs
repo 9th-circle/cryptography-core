@@ -17,7 +17,10 @@ namespace Cryptography.Core.Boxes
         }
         public byte[] generateSharedKey()
         {
-            return symmetric.generateNonce();
+            keyPacker.clear();
+            keyPacker.pack(symmetric.generateNonce());
+            keyPacker.pack(symmetric.generateKey());
+            return keyPacker.getOutput();
         }
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()
         {
@@ -28,59 +31,37 @@ namespace Cryptography.Core.Boxes
 
         public byte[] encrypt(byte[] data, byte[] privateKey, byte[] shared)
         {
-            return null;
-            /*
             lock (keyPacker)
             {
-                keyPacker.load(privateKey);
-                var signatureKey = keyPacker.unPack();
-                var asymPublicKey = keyPacker.unPack();
+                keyPacker.load(shared);
+                var nonce = keyPacker.unPack();
+                var key = keyPacker.unPack();
 
-                var singleKey = symmetric.generateKey();
-
-                var encryptedData = symmetric.encrypt(data, singleKey, shared);
-
-                List<byte> combined = new List<byte>();
-                combined.AddRange(encryptedPackage);
-                combined.AddRange(shared);
-                combined.AddRange(encryptedData);
+                var ciphertext = symmetric.encrypt(data, key, nonce);
+                var signature = this.signature.sign(ciphertext, privateKey);
 
                 keyPacker.clear();
-                keyPacker.pack(signature.sign(combined.ToArray(), signatureKey));
-                keyPacker.pack(encryptedPackage);
-                keyPacker.pack(encryptedData);
+                keyPacker.pack(signature);
+                keyPacker.pack(ciphertext);
 
                 return keyPacker.getOutput();
-            }*/
+            }
         }
 
         public byte[] decrypt(byte[] data, byte[] publicKey, byte[] shared)
         {
-            return null;
-            /*
-            lock (keyPacker)
-            {
-                keyPacker.load(privateKey);
-                var macKey = keyPacker.unPack();
-                var asymPrivateKey = keyPacker.unPack();
+            keyPacker.load(shared);
+            var nonce = keyPacker.unPack();
+            var key = keyPacker.unPack();
 
-                keyPacker.load(data);
-                var combinedSignature = keyPacker.unPack();
-                var encryptedPackage = keyPacker.unPack();
-                var encryptedData = keyPacker.unPack();
+            keyPacker.load(data);
+            var signature = keyPacker.unPack();
+            var ciphertext = keyPacker.unPack();
 
-                List<byte> combined = new List<byte>();
-                combined.AddRange(encryptedPackage);
-                combined.AddRange(shared);
-                combined.AddRange(encryptedData);
+            if (!this.signature.signatureIsValid(ciphertext, publicKey, signature))
+                return null;
 
-                if (!signature.signatureIsValid(combined.ToArray(), macKey,combinedSignature))
-                    return null;
-
-                var singleKey = asymmetric.decrypt(encryptedPackage, asymPrivateKey);
-
-                return symmetric.decrypt(encryptedData, singleKey, shared);
-            }*/
+            return symmetric.decrypt(ciphertext, key, nonce);
         }
 
         public string underlyingSymmetricPrimitiveName => symmetric.primitiveName;

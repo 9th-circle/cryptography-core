@@ -25,6 +25,23 @@ namespace Cryptography.Tests
             Assert.NotEqual(encrypted, decrypted);
         }
         [Fact]
+        public void simpleSignedBox()
+        {
+            var box = new SimpleSignedBox(new SystemDSA(), new SystemAES(), new PrefixPacker());
+            var keys = box.generateKeyPair();
+            var shared = box.generateSharedKey();
+
+            byte[] data = new byte[512];
+            for (int i = 0; i < data.Length; i++)
+                data[i] = (byte)(i % 256);
+
+            var encrypted = box.encrypt(data, keys.privateKey, shared);
+            var decrypted = box.decrypt(encrypted, keys.publicKey, shared);
+
+            Assert.Equal(data, decrypted);
+            Assert.NotEqual(encrypted, decrypted);
+        }
+        [Fact]
         public void simpleMacBox()
         {
             var box = new Core.Boxes.SimpleMacBox(new SystemHMAC_SHA512(), new SystemAES(), new SystemRSA(), new PrefixPacker());
