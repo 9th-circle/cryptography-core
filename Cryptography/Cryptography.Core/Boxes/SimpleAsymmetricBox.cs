@@ -47,7 +47,12 @@ namespace Cryptography.Core.Boxes
             lock (keyPacker)
             {
                 keyPacker.load(privateKey);
-                var signatureKey = keyPacker.unPack();
+                var signaturePrivateKey = keyPacker.unPack();
+                var asymPrivateKey = keyPacker.unPack();
+
+
+                keyPacker.load(publicKey);
+                var signaturePublicKey = keyPacker.unPack();
                 var asymPublicKey = keyPacker.unPack();
 
                 var singleKey = symmetric.generateKey();
@@ -58,11 +63,13 @@ namespace Cryptography.Core.Boxes
                 List<byte> combined = new List<byte>();
                 combined.AddRange(encryptedPackage);
                 combined.AddRange(shared);
+                combined.AddRange(publicKey);
                 combined.AddRange(encryptedData);
 
                 keyPacker.clear();
-                keyPacker.pack(signature.sign(combined.ToArray(), signatureKey));
+                keyPacker.pack(signature.sign(combined.ToArray(), signaturePrivateKey));
                 keyPacker.pack(encryptedPackage);
+                keyPacker.pack(publicKey);
                 keyPacker.pack(encryptedData);
 
                 return keyPacker.getOutput();
@@ -74,20 +81,26 @@ namespace Cryptography.Core.Boxes
             lock (keyPacker)
             {
                 keyPacker.load(privateKey);
-                var macKey = keyPacker.unPack();
+                var signaturePrivateKey = keyPacker.unPack();
                 var asymPrivateKey = keyPacker.unPack();
+                
+                keyPacker.load(publicKey);
+                var signaturePublicKey = keyPacker.unPack();
+                var asymPublicKey = keyPacker.unPack();
 
                 keyPacker.load(data);
                 var combinedSignature = keyPacker.unPack();
                 var encryptedPackage = keyPacker.unPack();
+                var theirPublicKey = keyPacker.unPack();
                 var encryptedData = keyPacker.unPack();
 
                 List<byte> combined = new List<byte>();
                 combined.AddRange(encryptedPackage);
                 combined.AddRange(shared);
+                combined.AddRange(theirPublicKey);
                 combined.AddRange(encryptedData);
 
-                if (!signature.signatureIsValid(combined.ToArray(), macKey,combinedSignature))
+                if (!signature.signatureIsValid(combined.ToArray(), signaturePublicKey,combinedSignature))
                     return null;
 
                 var singleKey = asymmetric.decrypt(encryptedPackage, asymPrivateKey);
