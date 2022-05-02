@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Cryptography.Interfaces;
 
-namespace Cryptography.Core.Boxes
+namespace Cryptography.Core
 {
-    class PrefixKeyPacker : IKeyPacker
+    public class PrefixKeyPacker : IKeyPacker
     {
         List<byte> contents = new List<byte>();
         public void clear()

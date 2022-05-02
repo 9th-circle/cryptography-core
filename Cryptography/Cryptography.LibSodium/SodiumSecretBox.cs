@@ -1,39 +1,33 @@
 ﻿using System.IO;
+using Cryptography.Core;
 using Cryptography.Interfaces;
 
 namespace Cryptography.LibSodium
 {
-    class SodiumSecretBox : ISymmetricBox
+    public class SodiumSecretBox : ISymmetricBox
     {
         public byte[] generateKey() {
-            var m = new MemoryStream();
-            var w = new BinaryWriter(m);
             var key = Sodium.SecretBox.GenerateKey();
             var nonce = Sodium.SecretBox.GenerateNonce();
-            w.Write(key.Length);
-            w.Write(key);
-            w.Write(nonce.Length);
-            w.Write(nonce);
-            return m.ToArray();
+            IKeyPacker p = new PrefixKeyPacker();
+            p.packKey(key);
+            p.packKey(nonce);
+            return p.getOutput();
         }
         public byte[] encrypt(byte[] data, byte[] keyPackage)
         {
-            var m = new MemoryStream(keyPackage);
-            var r = new BinaryReader(m);
-            var keyLength = r.ReadInt32();
-            var key = r.ReadBytes(keyLength);
-            var nonceLength = r.ReadInt32();
-            var nonce = r.ReadBytes(nonceLength);
+            IKeyPacker p = new PrefixKeyPacker();
+            p.load(keyPackage);
+            var key = p.unPackKey();
+            var nonce = p.unPackKey();
             return Sodium.SecretBox.Create(data, nonce, key);
         }
         public byte[] decrypt(byte[] data, byte[] keyPackage)
         {
-            var m = new MemoryStream(keyPackage);
-            var r = new BinaryReader(m);
-            var keyLength = r.ReadInt32();
-            var key = r.ReadBytes(keyLength);
-            var nonceLength = r.ReadInt32();
-            var nonce = r.ReadBytes(nonceLength);
+            IKeyPacker p = new PrefixKeyPacker();
+            p.load(keyPackage);
+            var key = p.unPackKey();
+            var nonce = p.unPackKey();
             return Sodium.SecretBox.Open(data, nonce, key);
         }
 
