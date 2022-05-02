@@ -7,10 +7,7 @@ namespace Cryptography.SystemCryptography
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()
         {
-            var param = new CspParameters();
-            param.Flags = CspProviderFlags.UseArchivableKey;
-
-            var dsa = new DSACryptoServiceProvider(param);
+            var dsa = new DSACryptoServiceProvider();
             dsa.PersistKeyInCsp = false;
 
             return (dsa.ExportSubjectPublicKeyInfo(), dsa.ExportPkcs8PrivateKey());
