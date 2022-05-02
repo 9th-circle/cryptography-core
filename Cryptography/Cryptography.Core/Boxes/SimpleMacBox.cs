@@ -1,16 +1,16 @@
-﻿/*using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Cryptography.Interfaces;
 
 namespace Cryptography.Core.Boxes
 {
-    public class SimpleAsymmetricBox : IAsymmetricBox
+    public class SimpleMacBox : IMacBox
     {
         IMAC mac;
         ISymmetricCipher symmetric;
         IAsymmetricCipher asymmetric;
         IKeyPacker keyPacker;
-        public SimpleAsymmetricBox(IMAC mac, ISymmetricCipher symmetric, IAsymmetricCipher asymmetric, IKeyPacker keyPacker)
+        public SimpleMacBox(IMAC mac, ISymmetricCipher symmetric, IAsymmetricCipher asymmetric, IKeyPacker keyPacker)
         {
             this.mac = mac;
             this.symmetric = symmetric;
@@ -19,10 +19,7 @@ namespace Cryptography.Core.Boxes
         }
         public byte[] generateNonce()
         {
-            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            byte[] output = new byte[128];
-            rng.GetBytes(output);
-            return output;
+            return symmetric.generateNonce();
         }
         public (byte[] senderKey, byte[] receiverKey) generateKeyPair()
         {
@@ -45,7 +42,7 @@ namespace Cryptography.Core.Boxes
             }
         }
 
-        public byte[] encrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] shared)
+        public byte[] encrypt(byte[] data, byte[] senderKey, byte[] shared)
         {
             lock (keyPacker)
             {
@@ -103,4 +100,4 @@ namespace Cryptography.Core.Boxes
         public string underlyingAsymmetricPrimitiveName => asymmetric.primitiveName;
         public string underlyingMACPrimitiveName => mac.primitiveName;
     }
-}*/
+}

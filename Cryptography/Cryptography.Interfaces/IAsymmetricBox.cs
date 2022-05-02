@@ -14,6 +14,6 @@ namespace Cryptography.Interfaces
         byte[] decrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] nonce);
         string underlyingSymmetricPrimitiveName { get; }
         string underlyingAsymmetricPrimitiveName { get; }
-        string underlyingMACPrimitiveName { get; }
+        string underlyingSignaturePrimitiveName { get; }
     }
 }

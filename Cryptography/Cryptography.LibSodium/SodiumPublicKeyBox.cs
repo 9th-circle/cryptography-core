@@ -29,7 +29,7 @@ namespace Cryptography.LibSodium
         }
 
         public string underlyingSymmetricPrimitiveName => "XSalsa20";
-        public string underlyingMACPrimitiveName => "Poly1305";
+        public string underlyingSignaturePrimitiveName => "Poly1305";
         public string underlyingAsymmetricPrimitiveName => "X25519";
     }
 }
