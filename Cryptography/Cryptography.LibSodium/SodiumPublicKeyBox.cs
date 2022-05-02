@@ -8,7 +8,7 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.LibSodium
 {
-    class SodiumPublicKeyBox : IAsymmetricBox
+    public class SodiumPublicKeyBox : IAsymmetricBox
     {
         public (byte[] senderKey, byte[] receiverKey) generateKeyPair()
         {
@@ -19,13 +19,13 @@ namespace Cryptography.LibSodium
         {
             return Sodium.PublicKeyBox.GenerateNonce();
         }
-        public byte[] encrypt(byte[] data, byte[] senderKey, byte[] shared)
+        public byte[] encrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] shared)
         {
-            return Sodium.PublicKeyBox.Create(data, shared, null, senderKey);
+            return Sodium.PublicKeyBox.Create(data, shared, receiverKey, senderKey);
         }
-        public byte[] decrypt(byte[] data, byte[] receiverKey, byte[] shared)
+        public byte[] decrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] shared)
         {
-            return Sodium.PublicKeyBox.Open(data, shared, receiverKey, null);
+            return Sodium.PublicKeyBox.Open(data, shared, receiverKey, senderKey);
         }
 
         public string underlyingSymmetricPrimitiveName => "XSalsa20";

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿/*using System.Collections.Generic;
 using System.Linq;
 using Cryptography.Interfaces;
 
@@ -45,7 +45,7 @@ namespace Cryptography.Core.Boxes
             }
         }
 
-        public byte[] encrypt(byte[] data, byte[] senderKey, byte[] shared)
+        public byte[] encrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] shared)
         {
             lock (keyPacker)
             {
@@ -103,4 +103,4 @@ namespace Cryptography.Core.Boxes
         public string underlyingAsymmetricPrimitiveName => asymmetric.primitiveName;
         public string underlyingMACPrimitiveName => mac.primitiveName;
     }
-}
+}*/

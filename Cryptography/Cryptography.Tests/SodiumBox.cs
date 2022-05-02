@@ -23,5 +23,22 @@ namespace Cryptography.Tests
             Assert.Equal(data,decrypted);
             Assert.NotEqual(encrypted,decrypted);
         }
+        [Fact]
+        public void simplePublicKeyBox()
+        {
+            var box = new SodiumPublicKeyBox();
+            var keys = box.generateKeyPair();
+            var nonce = box.generateNonce();
+
+            byte[] data = new byte[512];
+            for (int i = 0; i < data.Length; i++)
+                data[i] = (byte)(i % 256);
+
+            var encrypted = box.encrypt(data, keys.receiverKey, keys.senderKey, nonce);
+            var decrypted = box.decrypt(encrypted, keys.receiverKey, keys.senderKey, nonce);
+
+            Assert.Equal(data, decrypted);
+            Assert.NotEqual(encrypted, decrypted);
+        }
     }
 }

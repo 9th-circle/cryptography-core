@@ -63,7 +63,7 @@ namespace Cryptography.Core.Boxes
                 var macValue = keyPacker.unPackKey();
                 var cipherContents = keyPacker.unPackKey();
 
-                if (!mac.generate(data, macKey).SequenceEqual(macValue))
+                if (!mac.generate(cipherContents, macKey).SequenceEqual(macValue))
                     return null;
 
                 return symmetric.decrypt(cipherContents, symmetricKey, nonce);
