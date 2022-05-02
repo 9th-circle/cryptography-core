@@ -62,13 +62,11 @@ namespace Cryptography.Core.Boxes
                 List<byte> combined = new List<byte>();
                 combined.AddRange(encryptedPackage);
                 combined.AddRange(shared);
-                combined.AddRange(receiverPublicKey);
                 combined.AddRange(encryptedData);
 
                 keyPacker.clear();
                 keyPacker.pack(signature.sign(combined.ToArray(), signaturePrivateKey));
                 keyPacker.pack(encryptedPackage);
-                keyPacker.pack(receiverPublicKey);
                 keyPacker.pack(encryptedData);
 
                 return keyPacker.getOutput();
@@ -90,13 +88,11 @@ namespace Cryptography.Core.Boxes
                 keyPacker.load(data);
                 var combinedSignature = keyPacker.unPack();
                 var encryptedPackage = keyPacker.unPack();
-                var theirPublicKey = keyPacker.unPack();
                 var encryptedData = keyPacker.unPack();
 
                 List<byte> combined = new List<byte>();
                 combined.AddRange(encryptedPackage);
                 combined.AddRange(shared);
-                combined.AddRange(theirPublicKey);
                 combined.AddRange(encryptedData);
 
                 if (!signature.signatureIsValid(combined.ToArray(), signaturePublicKey,combinedSignature))
