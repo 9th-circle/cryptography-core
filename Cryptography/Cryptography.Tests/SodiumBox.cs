@@ -27,15 +27,16 @@ namespace Cryptography.Tests
         public void simplePublicKeyBox()
         {
             var box = new SodiumPublicKeyBox();
-            var keys = box.generateKeyPair();
+            var senderKeys = box.generateKeyPair();
+            var receiverKeys = box.generateKeyPair();
             var nonce = box.generateNonce();
 
             byte[] data = new byte[512];
             for (int i = 0; i < data.Length; i++)
                 data[i] = (byte)(i % 256);
 
-            var encrypted = box.encrypt(data, keys.receiverKey, keys.senderKey, nonce);
-            var decrypted = box.decrypt(encrypted, keys.receiverKey, keys.senderKey, nonce);
+            var encrypted = box.encrypt(data, senderKeys.privateKey, receiverKeys.publicKey, nonce);
+            var decrypted = box.decrypt(encrypted, receiverKeys.privateKey, senderKeys.publicKey, nonce);
 
             Assert.Equal(data, decrypted);
             Assert.NotEqual(encrypted, decrypted);

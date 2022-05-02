@@ -1,4 +1,5 @@
 ﻿using Cryptography.Core;
+using Cryptography.Core.Boxes;
 using Cryptography.LibSodium;
 using Cryptography.SystemCryptography;
 using Xunit;
@@ -36,6 +37,24 @@ namespace Cryptography.Tests
 
             var encrypted = box.encrypt(data, keys.senderKey, nonce);
             var decrypted = box.decrypt(encrypted, keys.receiverKey, nonce);
+
+            Assert.Equal(data, decrypted);
+            Assert.NotEqual(encrypted, decrypted);
+        }
+        [Fact]
+        public void simpleAsymmetricBox()
+        {
+            var box = new SimpleAsymmetricBox(new SystemDSA(), new SystemAES(), new SystemRSA(), new PrefixPacker());
+            var senderKeys = box.generateKeyPair();
+            var receiverKeys = box.generateKeyPair();
+            var nonce = box.generateNonce();
+
+            byte[] data = new byte[512];
+            for (int i = 0; i < data.Length; i++)
+                data[i] = (byte)(i % 256);
+
+            var encrypted = box.encrypt(data, senderKeys.privateKey, receiverKeys.publicKey, nonce);
+            var decrypted = box.decrypt(encrypted, receiverKeys.privateKey, senderKeys.publicKey, nonce);
 
             Assert.Equal(data, decrypted);
             Assert.NotEqual(encrypted, decrypted);
