@@ -24,15 +24,15 @@ namespace Cryptography.SystemCryptography
         {
             try
             {
-                var input = new MemoryStream(data);
                 var output = new MemoryStream();
                 var aes = new AesManaged();
-                var e = aes.CreateEncryptor();
+                var e = aes.CreateEncryptor(key,nonce);
 
-                using (CryptoStream cs = new CryptoStream(input, e, CryptoStreamMode.Write))
+                using (CryptoStream cs = new CryptoStream(output, e, CryptoStreamMode.Write))
                 {
-                    using (StreamWriter sw = new StreamWriter(cs))
+                    using (BinaryWriter sw = new BinaryWriter(cs))
                         sw.Write(data);
+                    cs.Flush();
                     return output.ToArray();
                 }
             }
@@ -46,15 +46,16 @@ namespace Cryptography.SystemCryptography
             try
             {
                 var input = new MemoryStream(data);
-                var output = new MemoryStream();
                 var aes = new AesManaged();
-                var d = aes.CreateDecryptor();
+                var d = aes.CreateDecryptor(key, nonce);
 
                 using (CryptoStream cs = new CryptoStream(input, d, CryptoStreamMode.Read))
                 {
-                    using (StreamWriter sw = new StreamWriter(cs))
-                        sw.Write(data);
-                    return output.ToArray();
+                    using (var output = new MemoryStream())
+                    {
+                        cs.CopyTo(output);
+                        return output.ToArray();
+                    }
                 }
             }
             catch
