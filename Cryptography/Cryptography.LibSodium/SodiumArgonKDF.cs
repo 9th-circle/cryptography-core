@@ -8,7 +8,7 @@ using Sodium;
 
 namespace Cryptography.LibSodium
 {
-    class SodiumArgonKDF : IKDF
+    public class SodiumArgonKDF : IKDF
     {
         public byte[] generateSalt()
         {
