@@ -9,25 +9,25 @@ namespace Cryptography.LibSodium
         public byte[] generateKey() {
             var key = Sodium.SecretBox.GenerateKey();
             var nonce = Sodium.SecretBox.GenerateNonce();
-            IKeyPacker p = new PrefixKeyPacker();
-            p.packKey(key);
-            p.packKey(nonce);
+            IPacker p = new PrefixPacker();
+            p.pack(key);
+            p.pack(nonce);
             return p.getOutput();
         }
         public byte[] encrypt(byte[] data, byte[] keyPackage)
         {
-            IKeyPacker p = new PrefixKeyPacker();
+            IPacker p = new PrefixPacker();
             p.load(keyPackage);
-            var key = p.unPackKey();
-            var nonce = p.unPackKey();
+            var key = p.unPack();
+            var nonce = p.unPack();
             return Sodium.SecretBox.Create(data, nonce, key);
         }
         public byte[] decrypt(byte[] data, byte[] keyPackage)
         {
-            IKeyPacker p = new PrefixKeyPacker();
+            IPacker p = new PrefixPacker();
             p.load(keyPackage);
-            var key = p.unPackKey();
-            var nonce = p.unPackKey();
+            var key = p.unPack();
+            var nonce = p.unPack();
             return Sodium.SecretBox.Open(data, nonce, key);
         }
 

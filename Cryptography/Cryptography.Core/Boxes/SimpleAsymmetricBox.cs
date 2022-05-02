@@ -4,15 +4,15 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core.Boxes
 {
-    public class SimpleMacBox : IMacBox
+    public class SimpleAsymmetricBox : IAsymmetricBox
     {
-        IMAC mac;
+        ISignatureCipher signature;
         ISymmetricCipher symmetric;
         IAsymmetricCipher asymmetric;
         IPacker keyPacker;
-        public SimpleMacBox(IMAC mac, ISymmetricCipher symmetric, IAsymmetricCipher asymmetric, IPacker keyPacker)
+        public SimpleAsymmetricBox(ISignatureCipher signature, ISymmetricCipher symmetric, IAsymmetricCipher asymmetric, IPacker keyPacker)
         {
-            this.mac = mac;
+            this.signature = signature;
             this.symmetric = symmetric;
             this.asymmetric = asymmetric;
             this.keyPacker = keyPacker;
@@ -21,20 +21,20 @@ namespace Cryptography.Core.Boxes
         {
             return symmetric.generateNonce();
         }
-        public (byte[] senderKey, byte[] receiverKey) generateKeyPair()
+        public (byte[] publicKey, byte[] privateKey) generateKeyPair()
         {
-            var macKey = generateNonce();
+            var sigKey = signature.generateKeyPair();
             var asymKeyPair = asymmetric.generateKeyPair();
 
             lock (keyPacker)
             {
                 keyPacker.clear();
-                keyPacker.pack(macKey);
+                keyPacker.pack(sigKey.publicKey);
                 keyPacker.pack(asymKeyPair.publicKey);
                 var publicKeys = keyPacker.getOutput();
 
                 keyPacker.clear();
-                keyPacker.pack(macKey);
+                keyPacker.pack(sigKey.privateKey);
                 keyPacker.pack(asymKeyPair.privateKey);
                 var privateKeys = keyPacker.getOutput();
 
@@ -42,12 +42,12 @@ namespace Cryptography.Core.Boxes
             }
         }
 
-        public byte[] encrypt(byte[] data, byte[] senderKey, byte[] shared)
+        public byte[] encrypt(byte[] data, byte[] senderKey, byte[] receiverKey, byte[] shared)
         {
             lock (keyPacker)
             {
                 keyPacker.load(senderKey);
-                var macKey = keyPacker.unPack();
+                var signatureKey = keyPacker.unPack();
                 var asymPublicKey = keyPacker.unPack();
 
                 var singleKey = symmetric.generateKey();
@@ -61,7 +61,7 @@ namespace Cryptography.Core.Boxes
                 combined.AddRange(encryptedData);
 
                 keyPacker.clear();
-                keyPacker.pack(mac.generate(combined.ToArray(), macKey));
+                keyPacker.pack(signature.sign(combined.ToArray(), signatureKey));
                 keyPacker.pack(encryptedPackage);
                 keyPacker.pack(encryptedData);
 
@@ -69,7 +69,7 @@ namespace Cryptography.Core.Boxes
             }
         }
 
-        public byte[] decrypt(byte[] data, byte[] receiverKey, byte[] shared)
+        public byte[] decrypt(byte[] data, byte[] senderKey, byte[] receiverKey, byte[] shared)
         {
             lock (keyPacker)
             {
@@ -87,7 +87,7 @@ namespace Cryptography.Core.Boxes
                 combined.AddRange(shared);
                 combined.AddRange(encryptedData);
 
-                if (!mac.generate(combined.ToArray(), macKey).SequenceEqual(combinedSignature))
+                if (!signature.signatureIsValid(combined.ToArray(), macKey,combinedSignature))
                     return null;
 
                 var singleKey = asymmetric.decrypt(encryptedPackage, asymPrivateKey);
@@ -98,6 +98,6 @@ namespace Cryptography.Core.Boxes
 
         public string underlyingSymmetricPrimitiveName => symmetric.primitiveName;
         public string underlyingAsymmetricPrimitiveName => asymmetric.primitiveName;
-        public string underlyingMACPrimitiveName => mac.primitiveName;
+        public string underlyingSignaturePrimitiveName => signature.primitiveName;
     }
 }

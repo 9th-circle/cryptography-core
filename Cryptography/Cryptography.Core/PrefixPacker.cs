@@ -7,7 +7,7 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core
 {
-    public class PrefixKeyPacker : IKeyPacker
+    public class PrefixPacker : IPacker
     {
         List<byte> contents = new List<byte>();
         public void clear()
@@ -23,7 +23,7 @@ namespace Cryptography.Core
                 contents.AddRange(data);
             }
         }
-        public void packKey(byte[] data)
+        public void pack(byte[] data)
         {
             lock (contents)
             {
@@ -31,7 +31,7 @@ namespace Cryptography.Core
                 contents.AddRange(data);
             }
         }
-        public byte[] unPackKey()
+        public byte[] unPack()
         {
             lock (contents)
             {

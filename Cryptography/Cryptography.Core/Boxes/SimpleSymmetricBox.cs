@@ -8,8 +8,8 @@ namespace Cryptography.Core.Boxes
     {
         IMAC mac;
         ISymmetricCipher symmetric;
-        IKeyPacker keyPacker;
-        public SimpleSymmetricBox(IMAC mac, ISymmetricCipher symmetric, IKeyPacker keyPacker)
+        IPacker keyPacker;
+        public SimpleSymmetricBox(IMAC mac, ISymmetricCipher symmetric, IPacker keyPacker)
         {
             this.mac = mac;
             this.symmetric = symmetric;
@@ -25,9 +25,9 @@ namespace Cryptography.Core.Boxes
                 var symmetricNonce = symmetric.generateNonce();
                 var macKey = symmetric.generateKey();
 
-                keyPacker.packKey(symmetricKey);
-                keyPacker.packKey(symmetricNonce);
-                keyPacker.packKey(macKey);
+                keyPacker.pack(symmetricKey);
+                keyPacker.pack(symmetricNonce);
+                keyPacker.pack(macKey);
 
                 return keyPacker.getOutput();
             }
@@ -37,16 +37,16 @@ namespace Cryptography.Core.Boxes
             lock (keyPacker)
             {
                 keyPacker.load(key);
-                var symmetricKey = keyPacker.unPackKey();
-                var nonce = keyPacker.unPackKey();
-                var macKey = keyPacker.unPackKey();
+                var symmetricKey = keyPacker.unPack();
+                var nonce = keyPacker.unPack();
+                var macKey = keyPacker.unPack();
 
                 keyPacker.load(new byte[] { });
 
                 var ciphertext = symmetric.encrypt(data, symmetricKey, nonce);
                 var macOutput = mac.generate(ciphertext, macKey);
-                keyPacker.packKey(macOutput);
-                keyPacker.packKey(ciphertext);
+                keyPacker.pack(macOutput);
+                keyPacker.pack(ciphertext);
                 return keyPacker.getOutput();
             }
         }
@@ -55,13 +55,13 @@ namespace Cryptography.Core.Boxes
             lock (keyPacker)
             {
                 keyPacker.load(key);
-                var symmetricKey = keyPacker.unPackKey();
-                var nonce = keyPacker.unPackKey();
-                var macKey = keyPacker.unPackKey();
+                var symmetricKey = keyPacker.unPack();
+                var nonce = keyPacker.unPack();
+                var macKey = keyPacker.unPack();
 
                 keyPacker.load(data);
-                var macValue = keyPacker.unPackKey();
-                var cipherContents = keyPacker.unPackKey();
+                var macValue = keyPacker.unPack();
+                var cipherContents = keyPacker.unPack();
 
                 if (!mac.generate(cipherContents, macKey).SequenceEqual(macValue))
                     return null;

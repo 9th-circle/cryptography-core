@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface IKeyPacker
+    public interface IPacker
     {
         void clear();
         void load(byte[] data);
-        void packKey(byte[] data);
-        byte[] unPackKey();
+        void pack(byte[] data);
+        byte[] unPack();
         byte[] getOutput();
     }
 }

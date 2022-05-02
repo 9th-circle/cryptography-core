@@ -8,7 +8,7 @@ namespace Cryptography.Interfaces
 {
     public interface IAsymmetricBox
     {
-        (byte[] senderKey, byte[] receiverKey) generateKeyPair();
+        (byte[] publicKey, byte[] privateKey) generateKeyPair();
         byte[] generateNonce();
         byte[] encrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] nonce);
         byte[] decrypt(byte[] data, byte[] receiverKey, byte[] senderKey, byte[] nonce);
