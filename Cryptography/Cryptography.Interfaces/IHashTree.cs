@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
-    public interface IHashTree
+    public interface IHashTree : IPrimitive
     {
+        byte[] hashChunk(byte[] leafData, long tier);
     }
 }
