@@ -17,5 +17,6 @@ namespace Cryptography.SystemCryptography
         public string primitiveName => "SHA-512";
         public string primitiveVariation => null;
         public string implementationName => "System.Security.Cryptography";
+        public string primitiveID => "SHA-512";
     }
 }

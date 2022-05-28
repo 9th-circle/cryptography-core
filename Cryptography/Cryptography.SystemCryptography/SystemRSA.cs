@@ -52,5 +52,6 @@ namespace Cryptography.SystemCryptography
         public string primitiveName => "RSA";
         public string primitiveVariation => null;
         public string implementationName => "System.Security.Cryptography";
+        public string primitiveID => "RSA";
     }
 }

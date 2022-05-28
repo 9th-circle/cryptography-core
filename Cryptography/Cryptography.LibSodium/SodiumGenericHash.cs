@@ -15,5 +15,6 @@ namespace Cryptography.LibSodium
         public string primitiveName => "BLAKE2b";
         public string primitiveVariation => "CryptoGeneticHash";
         public string implementationName => "LibSodium";
+        public string primitiveID => "BLAKE2b";
     }
 }

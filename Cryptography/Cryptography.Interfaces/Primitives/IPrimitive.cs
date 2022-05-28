@@ -11,5 +11,7 @@
         public string primitiveVariation { get; }
         /// <summary> Where did we get the implementation from? Which library? </summary>
         public string implementationName { get; }
+
+        public string primitiveID { get; }
     }
 }

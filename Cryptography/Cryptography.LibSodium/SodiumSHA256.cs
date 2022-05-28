@@ -15,5 +15,6 @@ namespace Cryptography.LibSodium
         public string primitiveName => "SHA-256";
         public string primitiveVariation => null;
         public string implementationName => "LibSodium";
+        public string primitiveID => "SHA-256";
     }
 }

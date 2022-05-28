@@ -30,5 +30,9 @@ namespace Cryptography.Core
         public string primitiveName => inner.primitiveName;
         public string primitiveVariation => inner.primitiveVariation;
         public string implementationName => inner.implementationName;
+
+
+
+        public string primitiveID => "LPR-" + inner.primitiveID;
     }
 }

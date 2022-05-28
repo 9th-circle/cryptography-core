@@ -19,5 +19,6 @@ namespace Cryptography.LibSodium
         public string primitiveName => "scrypt";
         public string primitiveVariation => "outputLength=32";
         public string implementationName => "LibSodium";
+        public string primitiveID => "scrypt-output=32";
     }
 }

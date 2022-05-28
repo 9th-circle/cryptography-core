@@ -31,5 +31,6 @@ namespace Cryptography.Core.HashTrees
         public string primitiveName => inner.primitiveName;
         public string primitiveVariation => inner.primitiveVariation;
         public string implementationName => inner.implementationName;
+        public string primitiveID => "SHT-" + inner.primitiveID;
     }
 }

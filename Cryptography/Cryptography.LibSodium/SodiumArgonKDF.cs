@@ -25,5 +25,6 @@ namespace Cryptography.LibSodium
         public string primitiveName => "Argon2id";
         public string primitiveVariation => "outputLength=16";
         public string implementationName => "LibSodium";
+        public string primitiveID => "Argon2id-interactive-outputLength=16-algorithm=2ID13";
     }
 }

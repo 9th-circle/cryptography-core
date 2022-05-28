@@ -17,5 +17,6 @@ namespace Cryptography.SystemCryptography
         public string primitiveName => "HMAC-SHA-256";
         public string primitiveVariation => null;
         public string implementationName => "System.Security.Cryptography";
+        public string primitiveID => "HMAC-SHA-256";
     }
 }

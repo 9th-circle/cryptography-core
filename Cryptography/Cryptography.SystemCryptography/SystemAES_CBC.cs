@@ -76,5 +76,6 @@ namespace Cryptography.SystemCryptography
         public string primitiveName => "AES";
         public string primitiveVariation => "KeySize=256";
         public string implementationName => "System.Security.Cryptography";
+        public string primitiveID => "AES-256-CBC";
     }
 }

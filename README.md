@@ -17,12 +17,16 @@ On a scale of "don't do this" to "***DEFINITELY*** don't do this":
 - ***DEFINITELY*** don't use broken or fragile primitives like RSA, DSA, MD5 or SHA-1 for anything whatsoever.
   - Implementations are included mostly to test migrations in case future cipher suites are broken.
 
+
+
 ### Do These Instead
 
 Here's what you should do instead:
 
 - Use a behavioural primitive for what you are trying to achieve.
 - If you are building a new behavioural primitive, you can use the box constructions in this library, as well as some of the KDFs and hashes, however:
-  - You should stick to libsodium's constructions regardless; and
+  - You should stick to libsodium's constructions (the ones in SafeCryptoFactory) regardless; and
   - You will have to integrate it into the Cryptographic Tracking Service to allow oversight of the strength of the construction.
+
+
 

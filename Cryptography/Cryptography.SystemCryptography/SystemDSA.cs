@@ -50,5 +50,6 @@ namespace Cryptography.SystemCryptography
         public string primitiveName => "DSA";
         public string primitiveVariation => null;
         public string implementationName => "System.Security.Cryptography";
+        public string primitiveID => "DSA";
     }
 }
