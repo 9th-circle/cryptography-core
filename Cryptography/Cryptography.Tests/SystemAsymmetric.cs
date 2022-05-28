@@ -21,6 +21,12 @@ namespace Cryptography.Tests
 
             Assert.NotEqual(encrypted, decrypted);
             Assert.Equal(data, decrypted);
+            
+            encrypted[3] = (byte)(encrypted[3] ^ 255);
+            Assert.Null(rsa.decrypt(encrypted, keys.privateKey));
+
+            keys.publicKey[3] = (byte)(keys.publicKey[3] ^ 255);
+            Assert.Null(rsa.encrypt(data,keys.publicKey));
         }
     }
 }

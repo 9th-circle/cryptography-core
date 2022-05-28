@@ -22,10 +22,6 @@ namespace Cryptography.LibSodium
         {
             return PasswordHash.ArgonHashBinary(input, salt, PasswordHash.StrengthArgon.Interactive, 16, PasswordHash.ArgonAlgorithm.Argon_2ID13);
         }
-        public bool valid(byte[] data, byte[] hash)
-        {
-            return PasswordHash.ArgonHashStringVerify(hash, data);
-        }
         public string primitiveName => "Argon2id";
         public string primitiveVariation => "outputLength=16";
         public string implementationName => "LibSodium";

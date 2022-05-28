@@ -44,8 +44,7 @@ namespace Cryptography.Tests
 
             Assert.Equal(data, decrypted);
             Assert.NotEqual(encrypted, decrypted);
-
-
+            
             encrypted[3] = (byte)(encrypted[3] ^ 255);
             Assert.Null(box.decrypt(encrypted, receiverKeys.privateKey, senderKeys.publicKey, nonce));
         }

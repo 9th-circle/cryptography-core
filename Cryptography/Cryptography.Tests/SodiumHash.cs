@@ -18,8 +18,10 @@ namespace Cryptography.Tests
         public void argonTest()
         {
             SodiumArgonKDF kdf = new SodiumArgonKDF();
-            var salt = Convert.FromBase64String("CcqbVMSAYFm0KweQMSDNKA==");
-            var output = kdf.generate(Encoding.UTF8.GetBytes("password goes here"), salt);
+            kdf.generateSalt(); //we will not use this one
+            var salt = Convert.FromBase64String("CcqbVMSAYFm0KweQMSDNKA==");    //here's one we prepared earlier
+            var input = Encoding.UTF8.GetBytes("password goes here");
+            var output = kdf.generate(input, salt);
 
             Assert.Equal("Oa9HCmzfbZSBDlLRR2latQ==",Convert.ToBase64String(output));
         }
@@ -27,8 +29,10 @@ namespace Cryptography.Tests
         public void scryptTest()
         {
             SodiumScryptKDF kdf = new SodiumScryptKDF();
-            var salt = Convert.FromBase64String("isE1iLU/b3kBRF9swdEO7NysWBzDvf9lOqA3jer48lo=");
-            var output = kdf.generate(Encoding.UTF8.GetBytes("password goes here"), salt);
+            kdf.generateSalt(); //we will not use this one
+            var salt = Convert.FromBase64String("isE1iLU/b3kBRF9swdEO7NysWBzDvf9lOqA3jer48lo=");    //here's one we prepared earlier
+            var input = Encoding.UTF8.GetBytes("password goes here");
+            var output = kdf.generate(input, salt);
 
             Assert.Equal("uXffLjD7fyhcWmoR26+5ja/wHKk1w9l7b0Wzth/Xk+Y=", Convert.ToBase64String(output));
         }

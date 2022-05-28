@@ -16,10 +16,6 @@ namespace Cryptography.LibSodium
         {
             return Sodium.PasswordHash.ScryptHashBinary(input, salt);
         }
-        public bool valid(byte[] data, byte[] hash)
-        {
-            return Sodium.PasswordHash.ScryptHashStringVerify(hash, data);
-        }
         public string primitiveName => "scrypt";
         public string primitiveVariation => "outputLength=32";
         public string implementationName => "LibSodium";

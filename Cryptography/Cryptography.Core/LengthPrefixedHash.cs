@@ -7,13 +7,13 @@ using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
 
-namespace Cryptography.Core.HashTrees
+namespace Cryptography.Core
 {
     /// <summary>
     /// Construction around a hash that includes the input data length as part of the output. Intended to defend against length extension attacks.
     /// This construction has not been extensively examined. Do not trust its security.
     /// </summary>
-    class LengthPrefixedHash : IHash
+    public class LengthPrefixedHash : IHash
     {
         IHash inner;
         public LengthPrefixedHash(IHash inner)

@@ -8,4 +8,10 @@
     <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Injector.Core">
+      <HintPath>..\..\..\injector\Injector\Injector.Core\bin\Debug\net5.0\Injector.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

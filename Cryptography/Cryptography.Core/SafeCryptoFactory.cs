@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Core
 {
-    class CryptoFactory
+    public static class SafeCryptoFactory
     {
     }
 }

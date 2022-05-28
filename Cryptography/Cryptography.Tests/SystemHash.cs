@@ -67,5 +67,12 @@ namespace Cryptography.Tests
             var output = hash.generate(Encoding.UTF8.GetBytes("some input"), Encoding.UTF8.GetBytes("password"));
             Assert.Equal("/byXFzrBIAoJcPgN8vYuvhUY7n42zcusXcXM1+46D+g5KMUxkpkMT4q5+cMbBILrbedQxO177IhBkHrTmJ5PFg==", Convert.ToBase64String(output));
         }
+        [Fact]
+        public void lengthPrefixed_sha512()
+        {
+            var hash = new Core.LengthPrefixedHash(new SystemSHA512());
+            var output = hash.hash(Encoding.UTF8.GetBytes("some input"));
+            Assert.Equal("jg+HjPT1Iy86LLWmFjJHk87PV8xfLVERQY2ROdBli/vLKLSmhoAzcF1yiuE4/jnHbLM9rA1PaP5uMIUwmpedTA==", Convert.ToBase64String(output));
+        }
     }
 }
