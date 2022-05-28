@@ -10,7 +10,7 @@ using Cryptography.LibSodium;
 using Cryptography.SystemCryptography;
 using Microsoft.CSharp.RuntimeBinder;
 
-namespace Cryptography.Core
+namespace Cryptography
 {
     public static class SafeCryptoFactory
     {
@@ -32,7 +32,7 @@ namespace Cryptography.Core
         {
             return bundle.factory.create<IMAC>(typeof(SodiumGenericMAC));
         }
-        public static IKDF createSodiumArgonKdf()
+        public static IKDF createSodiumArgonKDF()
         {
             return bundle.factory.create<IKDF>(typeof(SodiumArgonKDF));
         }

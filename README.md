@@ -31,3 +31,50 @@ Here's what you should do instead:
 
 
 
+## Safe Usage
+
+### Simplest Way To Create Instances
+
+1. Import the Cryptography DLL and any plugins you want (Cryptography.LibSodium is probably a good idea).
+2. Use Cryptography.SafeCryptoFactory methods to create whatever construction you need. They are all different. These ones are misuse-resistant and meet the industry standard of security.
+
+### Hashes
+
+These algorithms generate a short fingerprint of the provided piece of data.
+
+Create your instance.
+
+`byte[] output = instance.hash(input);`
+
+That's all there is to it.
+
+The hash algorithms in the safe list are resistant to length extension attacks.
+
+### MACs
+
+Exactly the same as hashes, except they have a secret key as well. Small changes to the secret key completely change the output, and it is difficult to guess the secret key from the output.
+
+`byte[] output = instance.generate(input, key);`
+
+In every other way these work like hashes.
+
+### KDFs
+
+These are used to turn small amounts of data into encryption keys, like for passwords.
+
+These functions are usually deliberately slow to make bruteforcing a difficult proposition.
+
+First you generate a salt:
+
+`byte[] salt = instance.generateSalt();`
+
+Now it just works like a MAC except slower:
+
+`byte[] output = instance.generate(password, salt);`
+
+Do not create your own salt. Use generateSalt().
+
+### Asymmetric Boxes
+
+### Symmetric Boxes
+
