@@ -48,63 +48,77 @@ namespace Cryptography.Core.Boxes
 
         public byte[] encrypt(byte[] data, byte[] senderPrivateKey, byte[] receiverPublicKey, byte[] shared)
         {
-            lock (keyPacker)
+            try
             {
-                keyPacker.load(senderPrivateKey);
-                var signaturePrivateKey = keyPacker.unPack();
-                var asymPrivateKey = keyPacker.unPack();
+                lock (keyPacker)
+                {
+                    keyPacker.load(senderPrivateKey);
+                    var signaturePrivateKey = keyPacker.unPack();
+                    var asymPrivateKey = keyPacker.unPack();
 
-                keyPacker.load(receiverPublicKey);
-                var signaturePublicKey = keyPacker.unPack();
-                var asymPublicKey = keyPacker.unPack();
+                    keyPacker.load(receiverPublicKey);
+                    var signaturePublicKey = keyPacker.unPack();
+                    var asymPublicKey = keyPacker.unPack();
 
-                var singleKey = symmetric.generateKey();
+                    var singleKey = symmetric.generateKey();
 
-                var encryptedPackage = asymmetric.encrypt(singleKey, asymPublicKey);
-                var encryptedData = symmetric.encrypt(data, singleKey, shared);
+                    var encryptedPackage = asymmetric.encrypt(singleKey, asymPublicKey);
+                    var encryptedData = symmetric.encrypt(data, singleKey, shared);
 
-                List<byte> combined = new List<byte>();
-                combined.AddRange(encryptedPackage);
-                combined.AddRange(shared);
-                combined.AddRange(encryptedData);
+                    List<byte> combined = new List<byte>();
+                    combined.AddRange(encryptedPackage);
+                    combined.AddRange(shared);
+                    combined.AddRange(encryptedData);
 
-                keyPacker.clear();
-                keyPacker.pack(signature.sign(combined.ToArray(), signaturePrivateKey));
-                keyPacker.pack(encryptedPackage);
-                keyPacker.pack(encryptedData);
+                    keyPacker.clear();
+                    keyPacker.pack(signature.sign(combined.ToArray(), signaturePrivateKey));
+                    keyPacker.pack(encryptedPackage);
+                    keyPacker.pack(encryptedData);
 
-                return keyPacker.getOutput();
+                    return keyPacker.getOutput();
+                }
+            }
+            catch
+            {
+                return null; // make debugging as hard as possible by giving no indication whatsoever of how or why it failed
             }
         }
 
         public byte[] decrypt(byte[] data, byte[] receiverPrivateKey, byte[] senderPublicKey, byte[] shared)
         {
-            lock (keyPacker)
+            try
             {
-                keyPacker.load(receiverPrivateKey);
-                var signaturePrivateKey = keyPacker.unPack();
-                var asymPrivateKey = keyPacker.unPack();
-                
-                keyPacker.load(senderPublicKey);
-                var signaturePublicKey = keyPacker.unPack();
-                var asymPublicKey = keyPacker.unPack();
+                lock (keyPacker)
+                {
+                    keyPacker.load(receiverPrivateKey);
+                    var signaturePrivateKey = keyPacker.unPack();
+                    var asymPrivateKey = keyPacker.unPack();
 
-                keyPacker.load(data);
-                var combinedSignature = keyPacker.unPack();
-                var encryptedPackage = keyPacker.unPack();
-                var encryptedData = keyPacker.unPack();
+                    keyPacker.load(senderPublicKey);
+                    var signaturePublicKey = keyPacker.unPack();
+                    var asymPublicKey = keyPacker.unPack();
 
-                List<byte> combined = new List<byte>();
-                combined.AddRange(encryptedPackage);
-                combined.AddRange(shared);
-                combined.AddRange(encryptedData);
+                    keyPacker.load(data);
+                    var combinedSignature = keyPacker.unPack();
+                    var encryptedPackage = keyPacker.unPack();
+                    var encryptedData = keyPacker.unPack();
 
-                if (!signature.signatureIsValid(combined.ToArray(), signaturePublicKey,combinedSignature))
-                    return null;
+                    List<byte> combined = new List<byte>();
+                    combined.AddRange(encryptedPackage);
+                    combined.AddRange(shared);
+                    combined.AddRange(encryptedData);
 
-                var singleKey = asymmetric.decrypt(encryptedPackage, asymPrivateKey);
+                    if (!signature.signatureIsValid(combined.ToArray(), signaturePublicKey, combinedSignature))
+                        return null;
 
-                return symmetric.decrypt(encryptedData, singleKey, shared);
+                    var singleKey = asymmetric.decrypt(encryptedPackage, asymPrivateKey);
+
+                    return symmetric.decrypt(encryptedData, singleKey, shared);
+                }
+            }
+            catch
+            {
+                return null; //hope your unit tests are good lol
             }
         }
 

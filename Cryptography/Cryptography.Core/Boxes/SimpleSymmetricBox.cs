@@ -39,42 +39,57 @@ namespace Cryptography.Core.Boxes
         }
         public byte[] encrypt(byte[] data, byte[] key)
         {
-            lock (keyPacker)
+            try
             {
-                keyPacker.load(key);
-                var symmetricKey = keyPacker.unPack();
-                var nonce = keyPacker.unPack();
-                var macKey = keyPacker.unPack();
+                lock (keyPacker)
+                {
+                    keyPacker.load(key);
+                    var symmetricKey = keyPacker.unPack();
+                    var nonce = keyPacker.unPack();
+                    var macKey = keyPacker.unPack();
 
-                keyPacker.load(new byte[] { });
+                    keyPacker.load(new byte[] { });
 
-                var ciphertext = symmetric.encrypt(data, symmetricKey, nonce);
-                var macOutput = mac.generate(ciphertext, macKey);
-                keyPacker.pack(macOutput);
-                keyPacker.pack(ciphertext);
-                return keyPacker.getOutput();
+                    var ciphertext = symmetric.encrypt(data, symmetricKey, nonce);
+                    var macOutput = mac.generate(ciphertext, macKey);
+                    keyPacker.pack(macOutput);
+                    keyPacker.pack(ciphertext);
+                    return keyPacker.getOutput();
+                }
+            }
+            catch
+            {
+                return null; // woah woah, who says I have a mother?
             }
         }
         public byte[] decrypt(byte[] data, byte[] key)
         {
-            lock (keyPacker)
+            try
             {
-                keyPacker.load(key);
-                var symmetricKey = keyPacker.unPack();
-                var nonce = keyPacker.unPack();
-                var macKey = keyPacker.unPack();
+                lock (keyPacker)
+                {
+                    keyPacker.load(key);
+                    var symmetricKey = keyPacker.unPack();
+                    var nonce = keyPacker.unPack();
+                    var macKey = keyPacker.unPack();
 
-                keyPacker.load(data);
-                var macValue = keyPacker.unPack();
-                var cipherContents = keyPacker.unPack();
+                    keyPacker.load(data);
+                    var macValue = keyPacker.unPack();
+                    var cipherContents = keyPacker.unPack();
 
-                if (!mac.generate(cipherContents, macKey).SequenceEqual(macValue))
-                    return null;
+                    if (!mac.generate(cipherContents, macKey).SequenceEqual(macValue))
+                        return null;
 
-                return symmetric.decrypt(cipherContents, symmetricKey, nonce);
+                    return symmetric.decrypt(cipherContents, symmetricKey, nonce);
+                }
+            }
+            catch
+            {
+                return null; // Sir, there's a car parked outside with license plate ZERO2SAY
             }
         }
-        
+
+
         public string underlyingSymmetricPrimitiveName => symmetric.primitiveName;
         public string underlyingMACPrimitiveName => mac.primitiveName;
     }

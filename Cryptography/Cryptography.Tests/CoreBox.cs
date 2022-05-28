@@ -11,7 +11,7 @@ namespace Cryptography.Tests
         [Fact]
         public void simpleSymmetric()
         {
-            var box = new Core.Boxes.SimpleSymmetricBox(new SystemHMAC_SHA512(), new SystemAES(), new PrefixPacker());
+            var box = new SimpleSymmetricBox(new SystemHMAC_SHA512(), new SystemAES(), new PrefixPacker());
             var key = box.generateKey();
 
             byte[] data = new byte[512];
@@ -44,7 +44,7 @@ namespace Cryptography.Tests
         [Fact]
         public void simpleMacBox()
         {
-            var box = new Core.Boxes.SimpleMacBox(new SystemHMAC_SHA512(), new SystemAES(), new SystemRSA(), new PrefixPacker());
+            var box = new SimpleMacBox(new SystemHMAC_SHA512(), new SystemAES(), new SystemRSA(), new PrefixPacker());
             var keys = box.generateKeyPair();
             var nonce = box.generateNonce();
 

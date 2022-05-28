@@ -36,37 +36,52 @@ namespace Cryptography.Core.Boxes
 
         public byte[] encrypt(byte[] data, byte[] privateKey, byte[] shared)
         {
-            lock (keyPacker)
+            try
             {
-                keyPacker.load(shared);
-                var nonce = keyPacker.unPack();
-                var key = keyPacker.unPack();
+                lock (keyPacker)
+                {
+                    keyPacker.load(shared);
+                    var nonce = keyPacker.unPack();
+                    var key = keyPacker.unPack();
 
-                var ciphertext = symmetric.encrypt(data, key, nonce);
-                var signatureData = signature.sign(ciphertext, privateKey);
+                    var ciphertext = symmetric.encrypt(data, key, nonce);
+                    var signatureData = signature.sign(ciphertext, privateKey);
 
-                keyPacker.clear();
-                keyPacker.pack(signatureData);
-                keyPacker.pack(ciphertext);
+                    keyPacker.clear();
+                    keyPacker.pack(signatureData);
+                    keyPacker.pack(ciphertext);
 
-                return keyPacker.getOutput();
+                    return keyPacker.getOutput();
+                }
+            }
+            catch
+            {
+                return null;    // Tell the doctor to eat a lemon
             }
         }
 
         public byte[] decrypt(byte[] data, byte[] publicKey, byte[] shared)
         {
-            keyPacker.load(shared);
-            var nonce = keyPacker.unPack();
-            var key = keyPacker.unPack();
+            try
+            {
+                keyPacker.load(shared);
+                var nonce = keyPacker.unPack();
+                var key = keyPacker.unPack();
 
-            keyPacker.load(data);
-            var signatureData = keyPacker.unPack();
-            var ciphertext = keyPacker.unPack();
+                keyPacker.load(data);
+                var signatureData = keyPacker.unPack();
+                var ciphertext = keyPacker.unPack();
 
-            if (!signature.signatureIsValid(ciphertext, publicKey, signatureData))
-                return null;
+                if (!signature.signatureIsValid(ciphertext, publicKey, signatureData))
+                    return null;
 
-            return symmetric.decrypt(ciphertext, key, nonce);
+                return symmetric.decrypt(ciphertext, key, nonce);
+
+            }
+            catch
+            {
+                return null; // there's a great reason decryption failed, but you'll never get it out of me
+            }
         }
 
         public string underlyingSymmetricPrimitiveName => symmetric.primitiveName;
