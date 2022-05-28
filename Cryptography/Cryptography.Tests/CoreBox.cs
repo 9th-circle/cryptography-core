@@ -1,4 +1,6 @@
 ﻿using Cryptography.Core;
+using Cryptography.Interfaces.Primitives;
+using Cryptography.Interfaces.Constructions;
 using Cryptography.Core.Boxes;
 using Cryptography.LibSodium;
 using Cryptography.SystemCryptography;
@@ -52,7 +54,7 @@ namespace Cryptography.Tests
         {
             var box = new SimpleMacBox(new SystemHMAC_SHA512(), new SystemAES_CBC(), new SystemRSA(), new PrefixPacker());
             var keys = box.generateKeyPair();
-            var nonce = box.generateNonce();
+            var nonce = box.generateSharedKey();
 
             byte[] data = new byte[512];
             for (int i = 0; i < data.Length; i++)

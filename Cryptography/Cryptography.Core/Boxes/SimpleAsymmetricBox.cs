@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cryptography.Interfaces;
+using Cryptography.Interfaces.Primitives;
+using Cryptography.Interfaces.Constructions;
 
 namespace Cryptography.Core.Boxes
 {

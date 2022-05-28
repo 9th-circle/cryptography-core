@@ -1,4 +1,4 @@
-﻿namespace Cryptography.Interfaces
+﻿namespace Cryptography.Interfaces.Primitives
 {
     /// <summary>
     /// Interface to a cryptographic primitive that allows asymmetric signatures.

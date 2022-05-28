@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cryptography.Interfaces.Primitives;
+using Cryptography.Interfaces.Constructions;
 
-namespace Cryptography.Interfaces
+namespace Cryptography.Interfaces.Constructions
 {
     /// <summary>
     /// Construction for taking many small hashes and combining them into a tree with a single value at the top.

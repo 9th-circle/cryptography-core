@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
 {
@@ -6,7 +7,7 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of SHA512.
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
-    public class SystemSHA512 : Interfaces.IHash
+    public class SystemSHA512 : IHash
     {
         SHA512Managed sha = new SHA512Managed();
         public byte[] hash(byte[] input)

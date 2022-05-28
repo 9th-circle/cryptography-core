@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cryptography.Interfaces
+namespace Cryptography.Interfaces.Primitives
 {
     /// <summary>
     /// A primitive that acts as a hash with a secret key. The main benefit of these primitives/constructions is resistance

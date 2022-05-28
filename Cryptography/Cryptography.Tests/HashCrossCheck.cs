@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cryptography.LibSodium;
+using Cryptography.Interfaces.Primitives;
+using Cryptography.Interfaces.Constructions;
 using Cryptography.SystemCryptography;
 using Xunit;
 
@@ -56,11 +58,11 @@ namespace Cryptography.Tests
 
             doNotEqual(a, b, Encoding.UTF8.GetBytes(testData));
         }
-        void doNotEqual(Interfaces.IHash a, Interfaces.IHash b, byte[] data)
+        void doNotEqual(IHash a, IHash b, byte[] data)
         {
             Assert.NotEqual(a.hash(data), b.hash(data));
         }
-        void doCrossCheck(Interfaces.IHash a, Interfaces.IHash b, byte[] data)
+        void doCrossCheck(IHash a, IHash b, byte[] data)
         {
             Assert.Equal(a.hash(data), b.hash(data));
         }

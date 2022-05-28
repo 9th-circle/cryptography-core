@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
 {
@@ -6,7 +7,7 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of RSA.
     /// This cipher is extremely sensitive to misuse. Do not use it for anything.
     /// </summary>
-    public class SystemRSA : Interfaces.IAsymmetricCipher
+    public class SystemRSA : IAsymmetricCipher
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
 {
@@ -11,7 +12,7 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of MD5.
     /// This cipher is completely broken. Do not use it for anything.
     /// </summary>
-    public class SystemMD5 : Interfaces.IHash
+    public class SystemMD5 : IHash
     {
         MD5 md5 = new MD5CryptoServiceProvider();
         public byte[] hash(byte[] input)

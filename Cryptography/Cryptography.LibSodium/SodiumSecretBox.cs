@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Cryptography.Core;
 using Cryptography.Interfaces;
+using Cryptography.Interfaces.Constructions;
 
 namespace Cryptography.LibSodium
 {

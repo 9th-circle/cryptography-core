@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cryptography.Interfaces;
+using Cryptography.Interfaces.Primitives;
 using Sodium;
 
 namespace Cryptography.LibSodium

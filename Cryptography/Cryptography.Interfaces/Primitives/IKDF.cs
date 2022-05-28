@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cryptography.Interfaces
+namespace Cryptography.Interfaces.Primitives
 {
     /// <summary>
     /// A primitive that allows you to generate an encryption key from a chunk of data.

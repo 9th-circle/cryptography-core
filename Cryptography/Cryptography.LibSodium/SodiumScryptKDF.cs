@@ -1,4 +1,5 @@
 ﻿using Cryptography.Interfaces;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
 {

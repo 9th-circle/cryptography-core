@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using Cryptography.Interfaces;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
 {

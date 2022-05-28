@@ -1,4 +1,4 @@
-﻿namespace Cryptography.Interfaces
+﻿namespace Cryptography.Interfaces.Primitives
 {
     /// <summary>
     /// Interface to any cryptographic primitive or a construction that uses them.

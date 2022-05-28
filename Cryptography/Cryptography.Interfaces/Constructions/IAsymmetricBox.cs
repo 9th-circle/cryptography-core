@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cryptography.Interfaces
+namespace Cryptography.Interfaces.Constructions
 {
     /// <summary>
     /// A construction that allows you to send/receive encrypted & authenticated data with someone you've exchanged public keys with.

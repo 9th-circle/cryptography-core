@@ -1,11 +1,12 @@
 ﻿using System.Security.Cryptography;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
 {
     /// <summary>
     /// Link to the .NET System.Cryptography Message Authentication Code based on SHA512.
     /// </summary>
-    public class SystemHMAC_SHA512 : Interfaces.IMAC
+    public class SystemHMAC_SHA512 : IMAC
     {
         HMACSHA512 hmac = new HMACSHA512();
         public byte[] generate(byte[] input, byte[] key)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
 {
@@ -10,7 +11,7 @@ namespace Cryptography.LibSodium
     /// Link to the LibSodium CryptoHash implementation of SHA512.
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
-    public class SodiumCryptoHash : Interfaces.IHash
+    public class SodiumCryptoHash : IHash
     {
         public byte[] hash(byte[] input)
         {

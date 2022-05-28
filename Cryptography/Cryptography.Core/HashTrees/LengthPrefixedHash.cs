@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cryptography.Interfaces;
+using Cryptography.Interfaces.Primitives;
+using Cryptography.Interfaces.Constructions;
 
 namespace Cryptography.Core.HashTrees
 {

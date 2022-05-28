@@ -1,4 +1,4 @@
-﻿namespace Cryptography.Interfaces
+﻿namespace Cryptography.Interfaces.Primitives
 {
     public interface IAsymmetricCipher : IPrimitive
     {

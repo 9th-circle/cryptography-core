@@ -1,10 +1,12 @@
-﻿namespace Cryptography.LibSodium
+﻿using Cryptography.Interfaces.Primitives;
+
+namespace Cryptography.LibSodium
 {
     /// <summary>
     /// Link to the LibSodium CryptoHash implementation of SHA512.
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
-    public class SodiumSHA512 : Interfaces.IHash
+    public class SodiumSHA512 : IHash
     {
         public byte[] hash(byte[] input)
         {

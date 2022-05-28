@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Cryptography.Interfaces;
+using Cryptography.Interfaces.Primitives;
+using Cryptography.Interfaces.Constructions;
 
 namespace Cryptography.Core.Boxes
 {
@@ -22,13 +24,13 @@ namespace Cryptography.Core.Boxes
             this.asymmetric = asymmetric;
             this.keyPacker = keyPacker;
         }
-        public byte[] generateNonce()
+        public byte[] generateSharedKey()
         {
             return symmetric.generateNonce();
         }
         public (byte[] senderKey, byte[] receiverKey) generateKeyPair()
         {
-            var macKey = generateNonce();
+            var macKey = generateSharedKey();
             var asymKeyPair = asymmetric.generateKeyPair();
 
             lock (keyPacker)
