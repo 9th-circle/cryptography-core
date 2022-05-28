@@ -9,6 +9,7 @@ namespace Cryptography.Core.HashTrees
 {
     /// <summary>
     /// Construction around a hash that includes the input data length as part of the output. Intended to defend against length extension attacks.
+    /// This construction has not been extensively examined. Do not trust its security.
     /// </summary>
     class LengthPrefixedHash : IHash
     {

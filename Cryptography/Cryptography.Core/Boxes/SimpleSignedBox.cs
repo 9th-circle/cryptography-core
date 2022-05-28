@@ -7,6 +7,7 @@ namespace Cryptography.Core.Boxes
     /// <summary>
     /// A construction that allows you to exchange encrypted + authenticated data with someone where you've agreed on a shared encryption key, but
     /// have exchanged public keys for authenticating the data.
+    /// This construction has not been extensively examined. Do not trust its security.
     /// </summary>
     public class SimpleSignedBox : ISignedBox
     {

@@ -2,6 +2,9 @@
 
 namespace Cryptography.LibSodium
 {
+    /// <summary>
+    /// Link to the LibSodium GenericHash implementation of scrypt password hash/KDF.
+    /// </summary>
     public class SodiumScryptKDF : IKDF
     {
         public byte[] generateSalt()

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Cryptography.Interfaces
 {
     /// <summary>
-    /// 
+    /// A construction for encrypting + authenticating data where both parties have agreed on a single shared key for
+    /// both authentication and encryption.
     /// </summary>
     public interface ISymmetricBox : IBox
     {

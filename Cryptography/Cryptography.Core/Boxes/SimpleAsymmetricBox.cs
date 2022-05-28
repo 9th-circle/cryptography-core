@@ -4,6 +4,10 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core.Boxes
 {
+    /// <summary>
+    /// A construction that allows you to send/receive encrypted & authenticated data with someone you've exchanged public keys with.
+    /// This construction has not been extensively examined. Do not trust its security.
+    /// </summary>
     public class SimpleAsymmetricBox : IAsymmetricBox
     {
         ISignatureCipher signature;

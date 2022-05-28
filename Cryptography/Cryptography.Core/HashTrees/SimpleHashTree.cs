@@ -9,6 +9,7 @@ namespace Cryptography.Core.HashTrees
 {
     /// <summary>
     /// Simple implementation of a Merkle tree that prefixes the tree tier number to the data.
+    /// This construction has not been extensively examined. Do not trust its security.
     /// </summary>
     class SimpleHashTree : IHashTree
     {

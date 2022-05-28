@@ -9,7 +9,7 @@ using Sodium;
 namespace Cryptography.LibSodium
 {
     /// <summary>
-    /// Link to the LibSodium GenericHash implementation of Argon2.
+    /// Link to the LibSodium GenericHash implementation of Argon2 password hash/KDF.
     /// </summary>
     public class SodiumArgonKDF : IKDF
     {

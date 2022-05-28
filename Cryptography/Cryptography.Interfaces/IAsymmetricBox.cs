@@ -11,6 +11,7 @@ namespace Cryptography.Interfaces
     /// </summary>
     public interface IAsymmetricBox : IBox
     {
+        /// <summary> Generates a public and private key pair. </summary>
         (byte[] publicKey, byte[] privateKey) generateKeyPair();
         byte[] generateNonce();
         byte[] encrypt(byte[] data, byte[] senderPrivateKey, byte[] receiverPublicKey, byte[] nonce);

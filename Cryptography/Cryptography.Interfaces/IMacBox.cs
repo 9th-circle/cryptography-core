@@ -6,6 +6,7 @@
     /// </summary>
     public interface IMacBox : IBox
     {
+        /// <summary> Generates a public and private key pair. </summary>
         (byte[] senderKey, byte[] receiverKey) generateKeyPair();
         byte[] generateNonce();
         byte[] encrypt(byte[] data, byte[] senderKey, byte[] nonce);

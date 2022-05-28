@@ -1,5 +1,8 @@
 ﻿namespace Cryptography.Interfaces
 {
+    /// <summary>
+    /// Parent interface for either a stream cipher or block cipher.
+    /// </summary>
     public interface ISymmetricCipher : IPrimitive
     {
         byte[] generateKey();

@@ -8,6 +8,9 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.LibSodium
 {
+    /// <summary>
+    /// A construction that allows you to send/receive encrypted & authenticated data with someone you've exchanged public keys with.
+    /// </summary>
     public class SodiumPublicKeyBox : IAsymmetricBox
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()

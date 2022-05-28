@@ -12,7 +12,9 @@ namespace Cryptography.Interfaces
     /// </summary>
     public interface ISignedBox : IBox
     {
+        /// <summary> Generates a public and private key pair. </summary>
         (byte[] publicKey, byte[] privateKey) generateKeyPair();
+
         byte[] generateSharedKey();
         byte[] encrypt(byte[] data, byte[] sharedKey, byte[] privateKey);
         byte[] decrypt(byte[] data, byte[] sharedKey, byte[] publicKey);
