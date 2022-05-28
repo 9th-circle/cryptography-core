@@ -56,7 +56,7 @@ namespace Cryptography.Core.Boxes
             }
             catch
             {
-                return null;    // Tell the doctor to eat a lemon
+                return null;    // Tell the developer to eat a lemon
             }
         }
 

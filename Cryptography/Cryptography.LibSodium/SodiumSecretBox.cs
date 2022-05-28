@@ -20,19 +20,33 @@ namespace Cryptography.LibSodium
         }
         public byte[] encrypt(byte[] data, byte[] keyPackage)
         {
-            IPacker p = new PrefixPacker();
-            p.load(keyPackage);
-            var key = p.unPack();
-            var nonce = p.unPack();
-            return Sodium.SecretBox.Create(data, nonce, key);
+            try
+            {
+                IPacker p = new PrefixPacker();
+                p.load(keyPackage);
+                var key = p.unPack();
+                var nonce = p.unPack();
+                return Sodium.SecretBox.Create(data, nonce, key);
+            }
+            catch
+            {
+                return null;
+            }
         }
         public byte[] decrypt(byte[] data, byte[] keyPackage)
         {
-            IPacker p = new PrefixPacker();
-            p.load(keyPackage);
-            var key = p.unPack();
-            var nonce = p.unPack();
-            return Sodium.SecretBox.Open(data, nonce, key);
+            try
+            {
+                IPacker p = new PrefixPacker();
+                p.load(keyPackage);
+                var key = p.unPack();
+                var nonce = p.unPack();
+                return Sodium.SecretBox.Open(data, nonce, key);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public string underlyingSymmetricPrimitiveName => "XSalsa20";

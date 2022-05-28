@@ -18,17 +18,34 @@ namespace Cryptography.LibSodium
             var keys = Sodium.PublicKeyBox.GenerateKeyPair();
             return (keys.PublicKey, keys.PrivateKey);
         }
+
         public byte[] generateNonce()
         {
             return Sodium.PublicKeyBox.GenerateNonce();
         }
+
         public byte[] encrypt(byte[] data, byte[] senderPrivateKey, byte[] receiverPublicKey, byte[] shared)
         {
-            return Sodium.PublicKeyBox.Create(data, shared, senderPrivateKey, receiverPublicKey);
+            try
+            {
+                return Sodium.PublicKeyBox.Create(data, shared, senderPrivateKey, receiverPublicKey);
+            }
+            catch
+            {
+                return null;
+            }
         }
+
         public byte[] decrypt(byte[] data, byte[] receiverPrivateKey, byte[] senderPublicKey, byte[] shared)
         {
-            return Sodium.PublicKeyBox.Open(data, shared, receiverPrivateKey, senderPublicKey);
+            try
+            {
+                return Sodium.PublicKeyBox.Open(data, shared, receiverPrivateKey, senderPublicKey);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public string underlyingSymmetricPrimitiveName => "XSalsa20";
