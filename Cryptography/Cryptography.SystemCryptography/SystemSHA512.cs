@@ -2,6 +2,10 @@
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of SHA512.
+    /// Note that this cipher provides no protection against length extension attacks.
+    /// </summary>
     public class SystemSHA512 : Interfaces.IHash
     {
         SHA512Managed sha = new SHA512Managed();

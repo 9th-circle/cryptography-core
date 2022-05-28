@@ -2,6 +2,9 @@
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of SHA384.
+    /// </summary>
     public class SystemSHA384 : Interfaces.IHash
     {
         SHA384Managed sha = new SHA384Managed();

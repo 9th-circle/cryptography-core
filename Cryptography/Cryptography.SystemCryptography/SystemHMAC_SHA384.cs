@@ -2,6 +2,9 @@
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography Message Authentication Code based on SHA384.
+    /// </summary>
     public class SystemHMAC_SHA384 : Interfaces.IMAC
     {
         HMACSHA384 hmac = new HMACSHA384();

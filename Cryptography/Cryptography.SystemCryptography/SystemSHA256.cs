@@ -2,6 +2,10 @@
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of SHA256.
+    /// Note that this cipher provides no protection against length extension attacks.
+    /// </summary>
     public class SystemSHA256 : Interfaces.IHash
     {
         SHA256Managed sha = new SHA256Managed();

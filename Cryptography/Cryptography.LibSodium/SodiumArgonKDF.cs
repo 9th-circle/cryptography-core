@@ -8,6 +8,9 @@ using Sodium;
 
 namespace Cryptography.LibSodium
 {
+    /// <summary>
+    /// Link to the LibSodium GenericHash implementation of Argon2.
+    /// </summary>
     public class SodiumArgonKDF : IKDF
     {
         public byte[] generateSalt()

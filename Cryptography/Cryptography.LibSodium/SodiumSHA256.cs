@@ -1,5 +1,9 @@
 ﻿namespace Cryptography.LibSodium
 {
+    /// <summary>
+    /// Link to the LibSodium CryptoHash implementation of SHA256.
+    /// Note that this cipher provides no protection against length extension attacks.
+    /// </summary>
     public class SodiumSHA256 : Interfaces.IHash
     {
         public byte[] hash(byte[] input)

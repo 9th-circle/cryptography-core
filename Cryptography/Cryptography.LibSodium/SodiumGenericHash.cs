@@ -1,5 +1,8 @@
 ﻿namespace Cryptography.LibSodium
 {
+    /// <summary>
+    /// Link to the LibSodium GenericHash implementation of BLAKE2b.
+    /// </summary>
     public class SodiumGenericHash : Interfaces.IMAC
     {
         public byte[] generate(byte[] input, byte[] key)
