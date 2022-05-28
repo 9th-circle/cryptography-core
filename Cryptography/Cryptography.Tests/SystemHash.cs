@@ -72,7 +72,21 @@ namespace Cryptography.Tests
         {
             var hash = new Core.LengthPrefixedHash(new SystemSHA512());
             var output = hash.hash(Encoding.UTF8.GetBytes("some input"));
-            Assert.Equal("jg+HjPT1Iy86LLWmFjJHk87PV8xfLVERQY2ROdBli/vLKLSmhoAzcF1yiuE4/jnHbLM9rA1PaP5uMIUwmpedTA==", Convert.ToBase64String(output));
+            Assert.Equal("CgAAAJ1Ma5NBYAzM75HxKw9koMV2TSeZAhJAA+gExT5d/11QcUDlnDGAdEU9nT79Mz1YP0EqM4Okhpm6bCG3fIY+FlU=", Convert.ToBase64String(output));
+        }
+        [Fact]
+        public void testHashTree()
+        {
+            var hash = new Core.LengthPrefixedHash(new SystemSHA512());
+            var tree = new Core.HashTrees.SimpleHashTree(hash);
+            var firstLeaf = tree.hashChunk(Encoding.UTF8.GetBytes("some input"),0);
+            var secondLeaf = tree.hashChunk(Encoding.UTF8.GetBytes("blah blah"), 0);
+            List<byte> combined = new List<byte>();
+            combined.AddRange(firstLeaf);
+            combined.AddRange(secondLeaf);
+            var branch = tree.hashChunk(combined.ToArray(), 1);
+
+            Assert.Equal("mAAAAHPB/YEj2Zt7BUIgpqkjYA4HY4Zl2MrkD10uCUuvGB2Fnoc8w8E+hjIP48fWcW7GR9T5R5F4Gv8EpqwBxwmg1Iw=", Convert.ToBase64String(branch));
         }
     }
 }

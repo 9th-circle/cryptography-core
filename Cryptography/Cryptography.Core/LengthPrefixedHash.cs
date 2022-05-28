@@ -24,8 +24,8 @@ namespace Cryptography.Core
         {
             List<byte> data = new List<byte>();
             data.AddRange(BitConverter.GetBytes(input.Length));
-            data.AddRange(input);
-            return inner.hash(data.ToArray());
+            data.AddRange(inner.hash(input));
+            return (data.ToArray());
         }
         public string primitiveName => inner.primitiveName;
         public string primitiveVariation => inner.primitiveVariation;

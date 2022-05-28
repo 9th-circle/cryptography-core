@@ -10,6 +10,7 @@ namespace Cryptography.Core.Boxes
     /// A construction for encrypting + authenticating data where both parties have agreed on a single shared key for
     /// both authentication and encryption.
     /// This construction has not been extensively examined. Do not trust its security.
+    /// It is not suitable for production systems.
     /// </summary>
     public class SimpleSymmetricBox : ISymmetricBox
     {
