@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cryptography.Core\Cryptography.Core.csproj" />
+    <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
+    <ProjectReference Include="..\Cryptography.LibSodium\Cryptography.LibSodium.csproj" />
+    <ProjectReference Include="..\Cryptography.SystemCryptography\Cryptography.SystemCryptography.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Injector.Core">
+      <HintPath>..\..\..\injector\Injector\Injector.Core\bin\Debug\net5.0\Injector.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

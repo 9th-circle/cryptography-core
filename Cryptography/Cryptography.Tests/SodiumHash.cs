@@ -10,7 +10,7 @@ namespace Cryptography.Tests
         [Fact]
         public void generic()
         {
-            var hash = new SodiumGenericHash();
+            var hash = new SodiumGenericMAC();
             var output = hash.generate(Encoding.UTF8.GetBytes("some slightly longer input"), Encoding.UTF8.GetBytes("passwordpassword"));
             Assert.Equal("cK2fD2HjRSlBxh0zALtECWq39e7XZq72DmY=", Convert.ToBase64String(output));
         }

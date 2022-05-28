@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cryptography.Interfaces.Primitives;
+﻿using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
 {
     /// <summary>
     /// Link to the LibSodium GenericHash implementation of BLAKE2b.
     /// </summary>
-    public class SodiumGenericHash : IHash
+    public class SodiumGenericMAC : IMAC
     {
-        public byte[] hash(byte[] input)
+        public byte[] generate(byte[] input, byte[] key)
         {
-            return Sodium.GenericHash.Hash(input, null, 0);
+            return Sodium.GenericHash.Hash(input, key, input.Length);
         }
 
         public string primitiveName => "BLAKE2b";
