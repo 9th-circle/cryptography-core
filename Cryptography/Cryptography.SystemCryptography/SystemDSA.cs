@@ -3,6 +3,10 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of DSA.
+    /// This cipher is extremely sensitive to misuse. Do not use it for anything.
+    /// </summary>
     public class SystemDSA : ISignatureCipher
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()

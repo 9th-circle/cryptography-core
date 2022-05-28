@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
+    /// <summary>
+    /// A construction that allows you to exchange encrypted + authenticated data with someone where you've agreed on a shared encryption key, but
+    /// have exchanged public keys for authenticating the data.
+    /// </summary>
     public interface ISignedBox : IBox
     {
         (byte[] publicKey, byte[] privateKey) generateKeyPair();

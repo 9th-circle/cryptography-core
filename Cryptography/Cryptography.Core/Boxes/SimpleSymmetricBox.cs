@@ -4,6 +4,10 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core.Boxes
 {
+    /// <summary>
+    /// A construction for encrypting + authenticating data where both parties have agreed on a single shared key for
+    /// both authentication and encryption.
+    /// </summary>
     public class SimpleSymmetricBox : ISymmetricBox
     {
         IMAC mac;

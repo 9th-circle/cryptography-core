@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of MD5.
+    /// This cipher is completely broken. Do not use it for anything.
+    /// </summary>
     public class SystemMD5 : Interfaces.IHash
     {
         MD5 md5 = new MD5CryptoServiceProvider();

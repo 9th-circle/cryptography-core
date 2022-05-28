@@ -8,6 +8,7 @@ namespace Cryptography.Interfaces
 {
     public enum BlockCipherMode
     {
+        /// <summary> Converts this block cipher into a stream cipher. Recommended mode. </summary>
         CTR,
         CBC,
         ECB,

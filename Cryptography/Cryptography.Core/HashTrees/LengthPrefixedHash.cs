@@ -7,6 +7,9 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core.HashTrees
 {
+    /// <summary>
+    /// Construction around a hash that includes the input data length as part of the output. Intended to defend against length extension attacks.
+    /// </summary>
     class LengthPrefixedHash : IHash
     {
         IHash inner;

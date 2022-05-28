@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
+    /// <summary>
+    /// A construction that allows you to send/receive encrypted & authenticated data with someone you've exchanged public keys with.
+    /// </summary>
     public interface IAsymmetricBox : IBox
     {
         (byte[] publicKey, byte[] privateKey) generateKeyPair();

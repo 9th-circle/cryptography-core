@@ -2,6 +2,10 @@
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of RSA.
+    /// This cipher is extremely sensitive to misuse. Do not use it for anything.
+    /// </summary>
     public class SystemRSA : Interfaces.IAsymmetricCipher
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()

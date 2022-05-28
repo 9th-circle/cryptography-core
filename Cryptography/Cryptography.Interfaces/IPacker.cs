@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
+    /// <summary>
+    /// Interface to a class that packs/unpacks data into a byte array.
+    /// </summary>
     public interface IPacker
     {
         void clear();

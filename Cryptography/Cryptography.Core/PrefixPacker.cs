@@ -7,6 +7,10 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core
 {
+    /// <summary>
+    /// Simple implementation of a data packer that prefixes each chunk of data with its length.
+    /// This packer's output is distinguishable from random even if the input data is not.
+    /// </summary>
     public class PrefixPacker : IPacker
     {
         List<byte> contents = new List<byte>();

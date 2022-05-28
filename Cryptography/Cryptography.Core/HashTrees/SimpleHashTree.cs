@@ -7,6 +7,9 @@ using Cryptography.Interfaces;
 
 namespace Cryptography.Core.HashTrees
 {
+    /// <summary>
+    /// Simple implementation of a Merkle tree that prefixes the tree tier number to the data.
+    /// </summary>
     class SimpleHashTree : IHashTree
     {
         IHash inner;

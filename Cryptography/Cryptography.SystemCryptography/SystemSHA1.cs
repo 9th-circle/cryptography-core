@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Cryptography.SystemCryptography
 {
+    /// <summary>
+    /// Link to the .NET System.Cryptography implementation of SHA1.
+    /// This cipher is completely broken. Do not use it for anything.
+    /// </summary>
     public class SystemSHA1 : Interfaces.IHash
     {
         SHA1Managed sha = new SHA1Managed();

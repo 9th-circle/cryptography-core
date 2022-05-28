@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cryptography.Interfaces
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ISymmetricBox : IBox
     {
         byte[] generateKey();
