@@ -11,7 +11,10 @@
         byte[] generateNonce();
         byte[] encrypt(byte[] data, byte[] senderKey, byte[] nonce);
         byte[] decrypt(byte[] data, byte[] receiverKey, byte[] nonce);
+
+        /// <summary> The name of the symmetric (stream/block) cipher this construction uses. </summary>
         string underlyingSymmetricPrimitiveName { get; }
+        /// <summary> The name of the asymmetric (public key) cipher this construction uses. </summary>
         string underlyingAsymmetricPrimitiveName { get; }
         string underlyingMACPrimitiveName { get; }
     }

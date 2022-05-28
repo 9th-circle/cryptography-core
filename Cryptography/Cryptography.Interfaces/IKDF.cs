@@ -13,8 +13,13 @@ namespace Cryptography.Interfaces
     /// </summary>
     public interface IKDF : IPrimitive
     {
+        /// <summary> Generate a random non-secret piece of data that makes space-time tradeoff (rainbow tables etc) much less practical. </summary>
         byte[] generateSalt();
+
+        /// <summary> Generate a key from the provided input and salt. Tne salt is copied into the output.</summary>
         byte[] generate(byte[] input, byte[] salt);
-        bool valid(byte[] data, byte[] hash);
+
+        /// <summary> Given a previously generated key, check if it matches the input provided. </summary>
+        bool valid(byte[] input, byte[] hash);
     }
 }

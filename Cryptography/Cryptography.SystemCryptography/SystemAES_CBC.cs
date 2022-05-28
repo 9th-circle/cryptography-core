@@ -6,10 +6,10 @@ namespace Cryptography.SystemCryptography
 {
     /// <summary>
     /// Link to the .NET System.Cryptography implementation of AES.
-    /// This version operates in CBC mode. Even when suppressing errors it can still leak timing clues.
+    /// This version operates in CBC mode. Even when suppressing errors it can still leak secret information.
     /// This implementation can provide a padding oracle with timing alone. Avoid using this where possible.
     /// </summary>
-    public class SystemAES : IBlockCipher
+    public class SystemAES_CBC : IBlockCipher
     {
         public byte[] generateKey()
         {

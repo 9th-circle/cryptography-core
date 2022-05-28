@@ -17,7 +17,7 @@ namespace Cryptography.Tests
             for (int i = 0; i < data.Length; i++)
                 data[i] = (byte)(i % 256);
 
-            var aes = new SystemAES();
+            var aes = new SystemAES_CBC();
 
             var key = aes.generateKey();
             var nonce = aes.generateNonce();

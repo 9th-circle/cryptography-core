@@ -38,8 +38,13 @@ namespace Cryptography.Interfaces
         /// <summary> A mode of encryption that is mostly fine but can leak timing secrets or provide a padding oracle.</summary>
         OFB
     }
+
+    /// <summary>
+    /// A cryptographic primitive that operates on a fixed size block and must use a chaining mode to encrypt arbitrary-length data.
+    /// </summary>
     public interface IBlockCipher : ISymmetricCipher
     {
+        /// <summary> Which block cipher mode the cipher is set to use. The correct answer is CTR. </summary>
         BlockCipherMode mode { get; }
     }
 }

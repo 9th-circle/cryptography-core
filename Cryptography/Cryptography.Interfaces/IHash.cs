@@ -11,6 +11,7 @@ namespace Cryptography.Interfaces
     /// </summary>
     public interface IHash : IPrimitive
     {
+        /// <summary> Process a piece of data and generate a fingerprint for it. </summary>
         byte[] hash(byte[] input);
     }
 }

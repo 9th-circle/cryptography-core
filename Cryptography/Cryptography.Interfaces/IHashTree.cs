@@ -11,6 +11,7 @@ namespace Cryptography.Interfaces
     /// </summary>
     public interface IHashTree : IPrimitive
     {
+        /// <summary> Take a piece of data and generate a fingerprint for it at that tier of the tree. </summary>
         byte[] hashChunk(byte[] leafData, long tier);
     }
 }

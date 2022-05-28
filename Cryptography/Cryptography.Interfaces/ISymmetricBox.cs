@@ -17,6 +17,7 @@ namespace Cryptography.Interfaces
         byte[] decrypt(byte[] data, byte[] key);
 
 
+        /// <summary> The name of the symmetric (stream/block) cipher this construction uses. </summary>
         string underlyingSymmetricPrimitiveName { get; }
         string underlyingMACPrimitiveName { get; }
     }

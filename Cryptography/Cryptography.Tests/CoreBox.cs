@@ -11,7 +11,7 @@ namespace Cryptography.Tests
         [Fact]
         public void simpleSymmetric()
         {
-            var box = new SimpleSymmetricBox(new SystemHMAC_SHA512(), new SystemAES(), new PrefixPacker());
+            var box = new SimpleSymmetricBox(new SystemHMAC_SHA512(), new SystemAES_CBC(), new PrefixPacker());
             var key = box.generateKey();
 
             byte[] data = new byte[512];
@@ -30,7 +30,7 @@ namespace Cryptography.Tests
         [Fact]
         public void simpleSignedBox()
         {
-            var box = new SimpleSignedBox(new SystemDSA(), new SystemAES(), new PrefixPacker());
+            var box = new SimpleSignedBox(new SystemDSA(), new SystemAES_CBC(), new PrefixPacker());
             var keys = box.generateKeyPair();
             var shared = box.generateSharedKey();
 
@@ -50,7 +50,7 @@ namespace Cryptography.Tests
         [Fact]
         public void simpleMacBox()
         {
-            var box = new SimpleMacBox(new SystemHMAC_SHA512(), new SystemAES(), new SystemRSA(), new PrefixPacker());
+            var box = new SimpleMacBox(new SystemHMAC_SHA512(), new SystemAES_CBC(), new SystemRSA(), new PrefixPacker());
             var keys = box.generateKeyPair();
             var nonce = box.generateNonce();
 
@@ -70,7 +70,7 @@ namespace Cryptography.Tests
         [Fact]
         public void simpleAsymmetricBox()
         {
-            var box = new SimpleAsymmetricBox(new SystemDSA(), new SystemAES(), new SystemRSA(), new PrefixPacker());
+            var box = new SimpleAsymmetricBox(new SystemDSA(), new SystemAES_CBC(), new SystemRSA(), new PrefixPacker());
             var senderKeys = box.generateKeyPair();
             var receiverKeys = box.generateKeyPair();
             var nonce = box.generateNonce();

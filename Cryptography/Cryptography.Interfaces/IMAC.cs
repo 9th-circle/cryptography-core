@@ -12,6 +12,7 @@ namespace Cryptography.Interfaces
     /// </summary>
     public interface IMAC : IPrimitive
     {
+        /// <summary> Generate a fingerprint of the provided data using the provided secret key. </summary>
         byte[] generate(byte[] input, byte[] key);
     }
 }

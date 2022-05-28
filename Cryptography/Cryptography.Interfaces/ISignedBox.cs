@@ -18,7 +18,11 @@ namespace Cryptography.Interfaces
         byte[] generateSharedKey();
         byte[] encrypt(byte[] data, byte[] sharedKey, byte[] privateKey);
         byte[] decrypt(byte[] data, byte[] sharedKey, byte[] publicKey);
+
+        /// <summary> The name of the symmetric (stream/block) cipher this construction uses. </summary>
         string underlyingSymmetricPrimitiveName { get; }
+
+        /// <summary> The name of the asymmetric signature algorithm this construction uses. </summary>
         string underlyingSignaturePrimitiveName { get; }
     }
 }
