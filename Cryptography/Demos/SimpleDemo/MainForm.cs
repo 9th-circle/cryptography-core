@@ -17,5 +17,12 @@ namespace SimpleDemo
             InitializeComponent();
         }
 
+        private void doHashButton_Click(object sender, EventArgs e)
+        {
+            string s = hashInputBox.Text;
+            var instance = Cryptography.SafeCryptoFactory.createSodiumGenericHash();
+            byte[] output = instance.hash(Encoding.UTF8.GetBytes(s));
+            hashOutputBox.Text = Convert.ToBase64String(output);
+        }
     }
 }
