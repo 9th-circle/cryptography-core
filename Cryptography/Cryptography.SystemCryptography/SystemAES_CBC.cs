@@ -9,6 +9,7 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of AES.
     /// This version operates in CBC mode. Even when suppressing errors it can still leak secret information.
     /// This implementation can provide a padding oracle with timing alone. Avoid using this where possible.
+    /// On processors that do not have AES-NI custom instructions, the algorithm itself can also leak timing secrets.
     /// </summary>
     public class SystemAES_CBC : IBlockCipher
     {

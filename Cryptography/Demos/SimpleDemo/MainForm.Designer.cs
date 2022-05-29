@@ -42,7 +42,6 @@ namespace SimpleDemo
             this.symmetricKeyBox = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.symmetricCiphertextBox = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -106,7 +105,6 @@ namespace SimpleDemo
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
@@ -116,6 +114,7 @@ namespace SimpleDemo
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(800, 450);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -259,16 +258,6 @@ namespace SimpleDemo
             this.symmetricCiphertextBox.Name = "symmetricCiphertextBox";
             this.symmetricCiphertextBox.Size = new System.Drawing.Size(780, 130);
             this.symmetricCiphertextBox.TabIndex = 1;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 422);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "AsymmetricBox";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -633,7 +622,6 @@ namespace SimpleDemo
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;

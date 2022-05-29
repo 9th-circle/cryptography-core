@@ -98,5 +98,10 @@ namespace SimpleDemo
                 symmetricPlaintextBox.Text = "Invalid secret key format.";
             }
         }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
