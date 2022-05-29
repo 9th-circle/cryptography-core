@@ -20,7 +20,14 @@ namespace Cryptography.LibSodium
         }
         public byte[] generate(byte[] input, byte[] salt)
         {
-            return PasswordHash.ArgonHashBinary(input, salt, PasswordHash.StrengthArgon.Interactive, 16, PasswordHash.ArgonAlgorithm.Argon_2ID13);
+            try
+            {
+                return PasswordHash.ArgonHashBinary(input, salt, PasswordHash.StrengthArgon.Interactive, 16, PasswordHash.ArgonAlgorithm.Argon_2ID13);
+            }
+            catch
+            {
+                return null;
+            }
         }
         public string primitiveName => "Argon2id";
         public string primitiveVariation => "outputLength=16";

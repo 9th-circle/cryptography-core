@@ -40,15 +40,24 @@ namespace SimpleDemo
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.hashOutputBox = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.macInputBox = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.macKeyBox = new System.Windows.Forms.TextBox();
             this.macButton = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.macOutputBox = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.macKeyBox = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.kdfInputBox = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.kdfSaltBox = new System.Windows.Forms.TextBox();
+            this.kdfButton = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.kdfOutputBox = new System.Windows.Forms.TextBox();
+            this.generateSaltButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -63,8 +72,16 @@ namespace SimpleDemo
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -193,15 +210,6 @@ namespace SimpleDemo
             this.tabPage4.Text = "MAC";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(792, 422);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "KDF";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,6 +250,26 @@ namespace SimpleDemo
             this.macInputBox.Size = new System.Drawing.Size(786, 165);
             this.macInputBox.TabIndex = 0;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.macKeyBox);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox5.Location = new System.Drawing.Point(0, 187);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(792, 54);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Key";
+            // 
+            // macKeyBox
+            // 
+            this.macKeyBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.macKeyBox.Location = new System.Drawing.Point(3, 19);
+            this.macKeyBox.Multiline = true;
+            this.macKeyBox.Name = "macKeyBox";
+            this.macKeyBox.Size = new System.Drawing.Size(786, 32);
+            this.macKeyBox.TabIndex = 0;
+            // 
             // macButton
             // 
             this.macButton.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -275,25 +303,123 @@ namespace SimpleDemo
             this.macOutputBox.Size = new System.Drawing.Size(786, 132);
             this.macOutputBox.TabIndex = 1;
             // 
-            // groupBox5
+            // tabPage5
             // 
-            this.groupBox5.Controls.Add(this.macKeyBox);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox5.Location = new System.Drawing.Point(0, 187);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(792, 54);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Key";
+            this.tabPage5.Controls.Add(this.splitContainer3);
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(792, 422);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "KDF";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // macKeyBox
+            // splitContainer3
             // 
-            this.macKeyBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.macKeyBox.Location = new System.Drawing.Point(3, 19);
-            this.macKeyBox.Multiline = true;
-            this.macKeyBox.Name = "macKeyBox";
-            this.macKeyBox.Size = new System.Drawing.Size(786, 32);
-            this.macKeyBox.TabIndex = 0;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox6);
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox7);
+            this.splitContainer3.Panel1.Controls.Add(this.kdfButton);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.groupBox8);
+            this.splitContainer3.Size = new System.Drawing.Size(792, 422);
+            this.splitContainer3.SplitterDistance = 264;
+            this.splitContainer3.TabIndex = 2;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.kdfInputBox);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(0, 0);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(792, 187);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Input";
+            // 
+            // kdfInputBox
+            // 
+            this.kdfInputBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kdfInputBox.Location = new System.Drawing.Point(3, 19);
+            this.kdfInputBox.Multiline = true;
+            this.kdfInputBox.Name = "kdfInputBox";
+            this.kdfInputBox.Size = new System.Drawing.Size(786, 165);
+            this.kdfInputBox.TabIndex = 0;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.generateSaltButton);
+            this.groupBox7.Controls.Add(this.kdfSaltBox);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox7.Location = new System.Drawing.Point(0, 187);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(792, 54);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Salt";
+            // 
+            // kdfSaltBox
+            // 
+            this.kdfSaltBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kdfSaltBox.Location = new System.Drawing.Point(3, 19);
+            this.kdfSaltBox.Multiline = true;
+            this.kdfSaltBox.Name = "kdfSaltBox";
+            this.kdfSaltBox.Size = new System.Drawing.Size(715, 32);
+            this.kdfSaltBox.TabIndex = 0;
+            // 
+            // kdfButton
+            // 
+            this.kdfButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kdfButton.Location = new System.Drawing.Point(0, 241);
+            this.kdfButton.Name = "kdfButton";
+            this.kdfButton.Size = new System.Drawing.Size(792, 23);
+            this.kdfButton.TabIndex = 1;
+            this.kdfButton.Text = "Activate KDF";
+            this.kdfButton.UseVisualStyleBackColor = true;
+            this.kdfButton.Click += new System.EventHandler(this.kdfButton_Click);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.kdfOutputBox);
+            this.groupBox8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox8.Location = new System.Drawing.Point(0, 0);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(792, 154);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Output";
+            // 
+            // kdfOutputBox
+            // 
+            this.kdfOutputBox.BackColor = System.Drawing.SystemColors.Window;
+            this.kdfOutputBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kdfOutputBox.Location = new System.Drawing.Point(3, 19);
+            this.kdfOutputBox.Multiline = true;
+            this.kdfOutputBox.Name = "kdfOutputBox";
+            this.kdfOutputBox.ReadOnly = true;
+            this.kdfOutputBox.Size = new System.Drawing.Size(786, 132);
+            this.kdfOutputBox.TabIndex = 1;
+            // 
+            // generateSaltButton
+            // 
+            this.generateSaltButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.generateSaltButton.Location = new System.Drawing.Point(717, 18);
+            this.generateSaltButton.Name = "generateSaltButton";
+            this.generateSaltButton.Size = new System.Drawing.Size(75, 33);
+            this.generateSaltButton.TabIndex = 1;
+            this.generateSaltButton.Text = "Generate";
+            this.generateSaltButton.UseVisualStyleBackColor = true;
+            this.generateSaltButton.Click += new System.EventHandler(this.generateSaltButton_Click);
             // 
             // MainForm
             // 
@@ -321,10 +447,21 @@ namespace SimpleDemo
             this.splitContainer2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -351,6 +488,15 @@ namespace SimpleDemo
         private System.Windows.Forms.Button macButton;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox macOutputBox;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox kdfInputBox;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button generateSaltButton;
+        private System.Windows.Forms.TextBox kdfSaltBox;
+        private System.Windows.Forms.Button kdfButton;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox kdfOutputBox;
     }
 }
 
