@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography.SystemCryptogr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography.LibSodium", "Cryptography.LibSodium\Cryptography.LibSodium.csproj", "{63CDC401-7D40-4B3F-AA53-4E26695C6E9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography", "Cryptography\Cryptography.csproj", "{4F6FB3BA-350E-43B5-BCD8-7B3C6C3A0080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography", "Cryptography\Cryptography.csproj", "{4F6FB3BA-350E-43B5-BCD8-7B3C6C3A0080}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{7A638C60-66A3-408B-A0E2-F063A815B60A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo", "Demos\SimpleDemo\SimpleDemo.csproj", "{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,16 @@ Global
 		{4F6FB3BA-350E-43B5-BCD8-7B3C6C3A0080}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F6FB3BA-350E-43B5-BCD8-7B3C6C3A0080}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F6FB3BA-350E-43B5-BCD8-7B3C6C3A0080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F} = {7A638C60-66A3-408B-A0E2-F063A815B60A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7053703-22E4-4D0E-9E08-0B8BE9E340E8}
