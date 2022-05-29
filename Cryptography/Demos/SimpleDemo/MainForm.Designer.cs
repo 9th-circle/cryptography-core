@@ -33,14 +33,22 @@ namespace SimpleDemo
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.hashInputBox = new System.Windows.Forms.TextBox();
             this.doHashButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.hashInputBox = new System.Windows.Forms.TextBox();
             this.hashOutputBox = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.macInputBox = new System.Windows.Forms.TextBox();
+            this.macButton = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.macOutputBox = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.macKeyBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -49,6 +57,14 @@ namespace SimpleDemo
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -95,24 +111,6 @@ namespace SimpleDemo
             this.tabPage3.Text = "Hash";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(792, 422);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "MAC";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(792, 422);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "KDF";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -143,6 +141,15 @@ namespace SimpleDemo
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input";
             // 
+            // hashInputBox
+            // 
+            this.hashInputBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.hashInputBox.Location = new System.Drawing.Point(3, 19);
+            this.hashInputBox.Multiline = true;
+            this.hashInputBox.Name = "hashInputBox";
+            this.hashInputBox.Size = new System.Drawing.Size(786, 219);
+            this.hashInputBox.TabIndex = 0;
+            // 
             // doHashButton
             // 
             this.doHashButton.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -165,15 +172,6 @@ namespace SimpleDemo
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Output";
             // 
-            // hashInputBox
-            // 
-            this.hashInputBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.hashInputBox.Location = new System.Drawing.Point(3, 19);
-            this.hashInputBox.Multiline = true;
-            this.hashInputBox.Name = "hashInputBox";
-            this.hashInputBox.Size = new System.Drawing.Size(786, 219);
-            this.hashInputBox.TabIndex = 0;
-            // 
             // hashOutputBox
             // 
             this.hashOutputBox.BackColor = System.Drawing.SystemColors.Window;
@@ -184,6 +182,118 @@ namespace SimpleDemo
             this.hashOutputBox.ReadOnly = true;
             this.hashOutputBox.Size = new System.Drawing.Size(786, 132);
             this.hashOutputBox.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.splitContainer2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(792, 422);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "MAC";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(792, 422);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "KDF";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox5);
+            this.splitContainer2.Panel1.Controls.Add(this.macButton);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer2.Size = new System.Drawing.Size(792, 422);
+            this.splitContainer2.SplitterDistance = 264;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.macInputBox);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(792, 187);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Input";
+            // 
+            // macInputBox
+            // 
+            this.macInputBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.macInputBox.Location = new System.Drawing.Point(3, 19);
+            this.macInputBox.Multiline = true;
+            this.macInputBox.Name = "macInputBox";
+            this.macInputBox.Size = new System.Drawing.Size(786, 165);
+            this.macInputBox.TabIndex = 0;
+            // 
+            // macButton
+            // 
+            this.macButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.macButton.Location = new System.Drawing.Point(0, 241);
+            this.macButton.Name = "macButton";
+            this.macButton.Size = new System.Drawing.Size(792, 23);
+            this.macButton.TabIndex = 1;
+            this.macButton.Text = "Activate MAC";
+            this.macButton.UseVisualStyleBackColor = true;
+            this.macButton.Click += new System.EventHandler(this.macButton_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.macOutputBox);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(792, 154);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Output";
+            // 
+            // macOutputBox
+            // 
+            this.macOutputBox.BackColor = System.Drawing.SystemColors.Window;
+            this.macOutputBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.macOutputBox.Location = new System.Drawing.Point(3, 19);
+            this.macOutputBox.Multiline = true;
+            this.macOutputBox.Name = "macOutputBox";
+            this.macOutputBox.ReadOnly = true;
+            this.macOutputBox.Size = new System.Drawing.Size(786, 132);
+            this.macOutputBox.TabIndex = 1;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.macKeyBox);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox5.Location = new System.Drawing.Point(0, 187);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(792, 54);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Key";
+            // 
+            // macKeyBox
+            // 
+            this.macKeyBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.macKeyBox.Location = new System.Drawing.Point(3, 19);
+            this.macKeyBox.Multiline = true;
+            this.macKeyBox.Name = "macKeyBox";
+            this.macKeyBox.Size = new System.Drawing.Size(786, 32);
+            this.macKeyBox.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -204,6 +314,17 @@ namespace SimpleDemo
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,6 +343,14 @@ namespace SimpleDemo
         private System.Windows.Forms.Button doHashButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox hashOutputBox;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox macInputBox;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox macKeyBox;
+        private System.Windows.Forms.Button macButton;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox macOutputBox;
     }
 }
 

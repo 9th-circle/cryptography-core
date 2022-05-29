@@ -24,5 +24,13 @@ namespace SimpleDemo
             byte[] output = instance.hash(Encoding.UTF8.GetBytes(s));
             hashOutputBox.Text = Convert.ToBase64String(output);
         }
+
+        private void macButton_Click(object sender, EventArgs e)
+        {
+            string s = macInputBox.Text;
+            var instance = Cryptography.SafeCryptoFactory.createSodiumGenericMac();
+            byte[] output = instance.generate(Encoding.UTF8.GetBytes(s), Encoding.UTF8.GetBytes(macKeyBox.Text));
+            macOutputBox.Text = Convert.ToBase64String(output);
+        }
     }
 }
