@@ -31,6 +31,17 @@ namespace SimpleDemo
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.symmetricPlaintextBox = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.symmetricDecryptButton = new System.Windows.Forms.Button();
+            this.symmetricEncryptButton = new System.Windows.Forms.Button();
+            this.generateSymmetricKeyButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.symmetricKeyBox = new System.Windows.Forms.TextBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.symmetricCiphertextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -53,12 +64,20 @@ namespace SimpleDemo
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.kdfInputBox = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.generateSaltButton = new System.Windows.Forms.Button();
             this.kdfSaltBox = new System.Windows.Forms.TextBox();
             this.kdfButton = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.kdfOutputBox = new System.Windows.Forms.TextBox();
-            this.generateSaltButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,6 +119,7 @@ namespace SimpleDemo
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.splitContainer4);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -107,6 +127,138 @@ namespace SimpleDemo
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SymmetricBox";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.groupBox9);
+            this.splitContainer4.Panel1.Controls.Add(this.groupBox10);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.groupBox11);
+            this.splitContainer4.Size = new System.Drawing.Size(786, 416);
+            this.splitContainer4.SplitterDistance = 260;
+            this.splitContainer4.TabIndex = 3;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.symmetricPlaintextBox);
+            this.groupBox9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox9.Location = new System.Drawing.Point(0, 0);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(786, 180);
+            this.groupBox9.TabIndex = 0;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Plaintext";
+            // 
+            // symmetricPlaintextBox
+            // 
+            this.symmetricPlaintextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.symmetricPlaintextBox.Location = new System.Drawing.Point(3, 19);
+            this.symmetricPlaintextBox.Multiline = true;
+            this.symmetricPlaintextBox.Name = "symmetricPlaintextBox";
+            this.symmetricPlaintextBox.Size = new System.Drawing.Size(780, 158);
+            this.symmetricPlaintextBox.TabIndex = 0;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.symmetricDecryptButton);
+            this.groupBox10.Controls.Add(this.symmetricEncryptButton);
+            this.groupBox10.Controls.Add(this.generateSymmetricKeyButton);
+            this.groupBox10.Controls.Add(this.button1);
+            this.groupBox10.Controls.Add(this.symmetricKeyBox);
+            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox10.Location = new System.Drawing.Point(0, 180);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(786, 80);
+            this.groupBox10.TabIndex = 2;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Secret Key";
+            // 
+            // symmetricDecryptButton
+            // 
+            this.symmetricDecryptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.symmetricDecryptButton.Location = new System.Drawing.Point(391, 55);
+            this.symmetricDecryptButton.Name = "symmetricDecryptButton";
+            this.symmetricDecryptButton.Size = new System.Drawing.Size(389, 23);
+            this.symmetricDecryptButton.TabIndex = 4;
+            this.symmetricDecryptButton.Text = "Decrypt";
+            this.symmetricDecryptButton.UseVisualStyleBackColor = true;
+            this.symmetricDecryptButton.Click += new System.EventHandler(this.symmetricDecryptButton_Click);
+            // 
+            // symmetricEncryptButton
+            // 
+            this.symmetricEncryptButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.symmetricEncryptButton.Location = new System.Drawing.Point(3, 54);
+            this.symmetricEncryptButton.Name = "symmetricEncryptButton";
+            this.symmetricEncryptButton.Size = new System.Drawing.Size(389, 23);
+            this.symmetricEncryptButton.TabIndex = 3;
+            this.symmetricEncryptButton.Text = "Encrypt";
+            this.symmetricEncryptButton.UseVisualStyleBackColor = true;
+            this.symmetricEncryptButton.Click += new System.EventHandler(this.symmetricEncryptButton_Click);
+            // 
+            // generateSymmetricKeyButton
+            // 
+            this.generateSymmetricKeyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.generateSymmetricKeyButton.Location = new System.Drawing.Point(708, 19);
+            this.generateSymmetricKeyButton.Name = "generateSymmetricKeyButton";
+            this.generateSymmetricKeyButton.Size = new System.Drawing.Size(75, 29);
+            this.generateSymmetricKeyButton.TabIndex = 2;
+            this.generateSymmetricKeyButton.Text = "Generate";
+            this.generateSymmetricKeyButton.UseVisualStyleBackColor = true;
+            this.generateSymmetricKeyButton.Click += new System.EventHandler(this.generateSymmetricKeyButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(2083, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 26);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Generate";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // symmetricKeyBox
+            // 
+            this.symmetricKeyBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.symmetricKeyBox.Location = new System.Drawing.Point(3, 19);
+            this.symmetricKeyBox.Multiline = true;
+            this.symmetricKeyBox.Name = "symmetricKeyBox";
+            this.symmetricKeyBox.Size = new System.Drawing.Size(703, 29);
+            this.symmetricKeyBox.TabIndex = 0;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.symmetricCiphertextBox);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox11.Location = new System.Drawing.Point(0, 0);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(786, 152);
+            this.groupBox11.TabIndex = 0;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Ciphertext";
+            // 
+            // symmetricCiphertextBox
+            // 
+            this.symmetricCiphertextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.symmetricCiphertextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.symmetricCiphertextBox.Location = new System.Drawing.Point(3, 19);
+            this.symmetricCiphertextBox.Multiline = true;
+            this.symmetricCiphertextBox.Name = "symmetricCiphertextBox";
+            this.symmetricCiphertextBox.Size = new System.Drawing.Size(780, 130);
+            this.symmetricCiphertextBox.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -365,6 +517,18 @@ namespace SimpleDemo
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Salt";
             // 
+            // generateSaltButton
+            // 
+            this.generateSaltButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.generateSaltButton.Location = new System.Drawing.Point(717, 18);
+            this.generateSaltButton.Name = "generateSaltButton";
+            this.generateSaltButton.Size = new System.Drawing.Size(75, 33);
+            this.generateSaltButton.TabIndex = 1;
+            this.generateSaltButton.Text = "Generate";
+            this.generateSaltButton.UseVisualStyleBackColor = true;
+            this.generateSaltButton.Click += new System.EventHandler(this.generateSaltButton_Click);
+            // 
             // kdfSaltBox
             // 
             this.kdfSaltBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -409,18 +573,6 @@ namespace SimpleDemo
             this.kdfOutputBox.Size = new System.Drawing.Size(786, 132);
             this.kdfOutputBox.TabIndex = 1;
             // 
-            // generateSaltButton
-            // 
-            this.generateSaltButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.generateSaltButton.Location = new System.Drawing.Point(717, 18);
-            this.generateSaltButton.Name = "generateSaltButton";
-            this.generateSaltButton.Size = new System.Drawing.Size(75, 33);
-            this.generateSaltButton.TabIndex = 1;
-            this.generateSaltButton.Text = "Generate";
-            this.generateSaltButton.UseVisualStyleBackColor = true;
-            this.generateSaltButton.Click += new System.EventHandler(this.generateSaltButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -429,8 +581,19 @@ namespace SimpleDemo
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Cryptography Core Demo";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -497,6 +660,17 @@ namespace SimpleDemo
         private System.Windows.Forms.Button kdfButton;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox kdfOutputBox;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.TextBox symmetricPlaintextBox;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button symmetricDecryptButton;
+        private System.Windows.Forms.Button symmetricEncryptButton;
+        private System.Windows.Forms.Button generateSymmetricKeyButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox symmetricKeyBox;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TextBox symmetricCiphertextBox;
     }
 }
 

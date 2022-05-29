@@ -55,5 +55,48 @@ namespace SimpleDemo
                 kdfOutputBox.Text = "Invalid salt format.";
             }
         }
+
+        private void generateSymmetricKeyButton_Click(object sender, EventArgs e)
+        {
+            var instance = Cryptography.SafeCryptoFactory.createSodiumSecretKeyBox();
+            symmetricKeyBox.Text = Convert.ToBase64String(instance.generateKey());
+        }
+
+        private void symmetricEncryptButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var instance = Cryptography.SafeCryptoFactory.createSodiumSecretKeyBox();
+                var key = Convert.FromBase64String(symmetricKeyBox.Text);
+                byte[] cipherText = instance.encrypt(Encoding.UTF8.GetBytes(symmetricPlaintextBox.Text), key);
+                if (cipherText == null)
+                    symmetricCiphertextBox.Text = "No output.";
+                else
+                    symmetricCiphertextBox.Text = Convert.ToBase64String(cipherText);
+            }
+            catch (System.FormatException)
+            {
+                symmetricCiphertextBox.Text = "Invalid secret key format.";
+            }
+        }
+
+        private void symmetricDecryptButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var instance = Cryptography.SafeCryptoFactory.createSodiumSecretKeyBox();
+                var key = Convert.FromBase64String(symmetricKeyBox.Text);
+                byte[] cipherText = Convert.FromBase64String(symmetricCiphertextBox.Text);
+                byte[] plaintext = instance.decrypt(cipherText, key);
+                if (plaintext == null)
+                    symmetricPlaintextBox.Text = "No output.";
+                else
+                    symmetricPlaintextBox.Text = Encoding.UTF8.GetString(plaintext);
+            }
+            catch (System.FormatException)
+            {
+                symmetricPlaintextBox.Text = "Invalid secret key format.";
+            }
+        }
     }
 }
