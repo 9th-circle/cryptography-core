@@ -62,7 +62,7 @@ namespace Cryptography.Core.Boxes
             }
             catch
             {
-                return null; // woah woah, who says I have a mother?
+                return null; // woahwee, who says I have a mother?
             }
         }
         public byte[] decrypt(byte[] data, byte[] key)
@@ -88,7 +88,7 @@ namespace Cryptography.Core.Boxes
             }
             catch
             {
-                return null; // Sir, there's a car parked outside with license plate ZERO2SAY
+                return null; // Anyone here own a black Lincoln Continental, license plate "ZERO2SAY"?
             }
         }
 

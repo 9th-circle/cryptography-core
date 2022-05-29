@@ -14,7 +14,7 @@ namespace Cryptography.LibSodium
     {
         public byte[] hash(byte[] input)
         {
-            return Sodium.GenericHash.Hash(input, null, 0);
+            return Sodium.GenericHash.Hash(input, new byte[16], 64);
         }
 
         public string primitiveName => "BLAKE2b";

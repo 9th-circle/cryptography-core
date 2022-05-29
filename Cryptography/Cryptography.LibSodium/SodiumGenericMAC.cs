@@ -1,4 +1,5 @@
-﻿using Cryptography.Interfaces.Primitives;
+﻿using System.Collections.Generic;
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
 {
@@ -9,7 +10,11 @@ namespace Cryptography.LibSodium
     {
         public byte[] generate(byte[] input, byte[] key)
         {
-            return Sodium.GenericHash.Hash(input, key, input.Length);
+            List<byte> newKey = new List<byte>();
+            newKey.AddRange(key);
+            while(newKey.Count < 16)
+                newKey.Add(0);
+            return Sodium.GenericHash.Hash(input, newKey.ToArray(), 64);
         }
 
         public string primitiveName => "BLAKE2b";

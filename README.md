@@ -1,5 +1,9 @@
 # Cryptography Core
 
+The Cryptography Core is a simple, modular system for accessing encryption primitives and constructions.
+
+
+
 ## WARNING!
 
 **If you are thinking about using any of this directly, you are (more likely than not) doing something wrong.**
@@ -36,13 +40,13 @@ Here's what you should do instead:
 ### Simplest Way To Create Instances
 
 1. Import the Cryptography DLL and any plugins you want (Cryptography.LibSodium is probably a good idea).
-2. Use Cryptography.SafeCryptoFactory methods to create whatever construction you need. They are all different. These ones are misuse-resistant and meet the industry standard of security.
+2. Use Cryptography.SafeCryptoFactory methods to create whatever construction you need. Each construction works differently. These ones are misuse-resistant and meet the industry standard of security.
 
 ### Hashes
 
 These algorithms generate a short fingerprint of the provided piece of data.
 
-Create your instance.
+Create your instance, then:
 
 `byte[] output = instance.hash(input);`
 
@@ -76,5 +80,45 @@ Do not create your own salt. Use generateSalt().
 
 ### Asymmetric Boxes
 
+Asymmetric boxes allow two parties to send each other messages securely while knowing only the other party's public keys.
+
+First, you generate a nonce:
+
+`byte[] nonce = instance.generateNonce();`
+
+This is non-secret and must be shared with both parties.
+
+Each party then generates a key pair:
+
+`var myKeys = instance.generateKeyPair();`
+
+They then send each other their public keys.
+
+We can then encrypt data:
+
+`byte[] encrypted = instance.encrypt(theData, myKeys.privateKey, theirPublicKey, nonce);`
+
+We send it to the other party.
+
+They can then decrypt it:
+
+`byte[] decrypted = instance.decrypt(encrypted, theirKeys.privateKey, myPublicKey, nonce);`
+
 ### Symmetric Boxes
 
+Symmetric boxes allow two parties to send each other authenticated messages securely based on a shared secret key.
+
+We first generate the secret key:
+
+`byte[] key = instance.generateKey();`
+
+We can encrypt data:
+`byte[] encrypted = instance.encrypt(data, key);`
+
+And decrypt it:
+
+`byte[] decrypted = instance.decrypt(encrypted, key);`
+
+## Unsafe Usage
+
+This library does other things, but I am not encouraging this behaviour. Stick to what's in this file.

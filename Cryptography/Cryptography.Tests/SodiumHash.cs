@@ -8,11 +8,20 @@ namespace Cryptography.Tests
     public class SodiumHash
     {
         [Fact]
-        public void generic()
+        public void genericMAC()
         {
             var hash = new SodiumGenericMAC();
             var output = hash.generate(Encoding.UTF8.GetBytes("some slightly longer input"), Encoding.UTF8.GetBytes("passwordpassword"));
-            Assert.Equal("cK2fD2HjRSlBxh0zALtECWq39e7XZq72DmY=", Convert.ToBase64String(output));
+            Assert.Equal("TroNQX9W0C3QxjcACwq8/VsNm6MyQHRTKxOhvFXwxGxt8w+aDERrBHxmuZlW0kOOTsF+yeQNmZ7/Bukuakpx7g==", Convert.ToBase64String(output));
+            var output2 = hash.generate(Encoding.UTF8.GetBytes("some slightly longer input"), Encoding.UTF8.GetBytes(""));
+            Assert.Equal("NOTiTJXn7oafjMb5CQ/wWfsDjslFV7kXtbnbM/XgF5q4Mky2yMoEV8+ayYwmXAuA7dABgAw/Oh6XdqQvoSU7xA==", Convert.ToBase64String(output2));
+        }
+        [Fact]
+        public void genericHash()
+        {
+            var hash = new SodiumGenericHash();
+            var output = hash.hash(Encoding.UTF8.GetBytes("some slightly longer input"));
+            Assert.Equal("NOTiTJXn7oafjMb5CQ/wWfsDjslFV7kXtbnbM/XgF5q4Mky2yMoEV8+ayYwmXAuA7dABgAw/Oh6XdqQvoSU7xA==", Convert.ToBase64String(output));
         }
         [Fact]
         public void argonTest()
