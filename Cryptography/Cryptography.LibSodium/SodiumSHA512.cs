@@ -1,4 +1,6 @@
-﻿using Cryptography.Interfaces.Primitives;
+﻿#if DEBUG    //If you are thinking about removing this line, you are probably about to make a major mistake.
+             //SHA-512 is considered secure against collision attacks, but not against length extension.
+using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
 {
@@ -18,3 +20,4 @@ namespace Cryptography.LibSodium
         public string primitiveID => "SHA-512";
     }
 }
+#endif

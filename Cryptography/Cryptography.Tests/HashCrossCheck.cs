@@ -14,6 +14,7 @@ namespace Cryptography.Tests
 {
     public class HashCrossCheck
     {
+#if DEBUG
         [Theory]
         [InlineData("test data")]
         [InlineData("some other data")]
@@ -66,5 +67,6 @@ namespace Cryptography.Tests
         {
             Assert.Equal(a.hash(data), b.hash(data));
         }
+#endif
     }
 }

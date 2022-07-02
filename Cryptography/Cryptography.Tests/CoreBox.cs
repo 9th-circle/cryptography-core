@@ -1,15 +1,18 @@
 ﻿using Cryptography.Core;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
-using Cryptography.Core.Boxes;
 using Cryptography.LibSodium;
 using Cryptography.SystemCryptography;
 using Xunit;
+#if DEBUG
+using Cryptography.Core.Boxes;
+#endif
 
 namespace Cryptography.Tests
 {
     public class CoreBox
     {
+#if DEBUG
         [Fact]
         public void simpleSymmetric()
         {
@@ -90,5 +93,6 @@ namespace Cryptography.Tests
             encrypted[3] = (byte)(encrypted[3] ^ 255);
             Assert.Null(box.decrypt(encrypted, receiverKeys.privateKey, senderKeys.publicKey, nonce));
         }
+#endif
     }
 }

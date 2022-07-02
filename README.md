@@ -4,6 +4,8 @@ The Cryptography Core is a simple, modular system for accessing encryption primi
 
 
 
+This module is designed around the idea that any cryptographic function will either return the correct data, or null. It should not throw exceptions or give any other detail that something is wrong.
+
 ## WARNING!
 
 **If you are thinking about using any of this directly, you are (more likely than not) doing something wrong.**
@@ -121,4 +123,5 @@ And decrypt it:
 
 ## Unsafe Usage
 
-This library does other things, but I am not encouraging this behaviour. Stick to what's in this file.
+This library does other things, but I am not encouraging this behaviour. Stick to what's in this README.
+

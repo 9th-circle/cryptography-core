@@ -45,6 +45,7 @@ namespace Cryptography.Tests
 
             Assert.Equal("uXffLjD7fyhcWmoR26+5ja/wHKk1w9l7b0Wzth/Xk+Y=", Convert.ToBase64String(output));
         }
+#if DEBUG
         [Fact]
         public void sha256()
         {
@@ -66,6 +67,6 @@ namespace Cryptography.Tests
             var output = hash.hash(Encoding.UTF8.GetBytes("some input"));
             Assert.Equal("nUxrk0FgDMzvkfErD2SgxXZNJ5kCEkAD6ATFPl3/XVBxQOWcMYB0RT2dPv0zPVg/QSozg6SGmbpsIbd8hj4WVQ==", Convert.ToBase64String(output));
         }
-
+#endif
     }
 }

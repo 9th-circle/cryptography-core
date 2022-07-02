@@ -10,6 +10,7 @@ namespace Cryptography.Tests
 {
     public class SystemSymmetric
     {
+#if DEBUG
         [Fact]
         public void basicAES()
         {
@@ -29,5 +30,6 @@ namespace Cryptography.Tests
             Assert.NotEqual(encrypted,decrypted);
             Assert.Equal(data,decrypted);
         }
+#endif
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -25,3 +26,4 @@ namespace Cryptography.SystemCryptography
         public string primitiveID => "MD5";
     }
 }
+#endif

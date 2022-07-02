@@ -5,7 +5,7 @@ namespace Cryptography.Tests
 {
     public class SystemAsymmetric
     {
-
+#if DEBUG
         [Fact]
         public void basicRSA()
         {
@@ -28,5 +28,6 @@ namespace Cryptography.Tests
             keys.publicKey[3] = (byte)(keys.publicKey[3] ^ 255);
             Assert.Null(rsa.encrypt(data,keys.publicKey));
         }
+#endif
     }
 }

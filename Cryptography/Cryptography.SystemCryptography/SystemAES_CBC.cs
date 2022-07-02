@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
+using System.IO;
 using System.Security.Cryptography;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
@@ -80,3 +81,4 @@ namespace Cryptography.SystemCryptography
         public string primitiveID => "AES-256-CBC";
     }
 }
+#endif

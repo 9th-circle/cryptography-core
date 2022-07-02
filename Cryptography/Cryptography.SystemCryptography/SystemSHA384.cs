@@ -5,6 +5,7 @@ namespace Cryptography.SystemCryptography
 {
     /// <summary>
     /// Link to the .NET System.Cryptography implementation of SHA384.
+    /// SHA-384 provides 192 bits of security against length extension attacks.
     /// </summary>
     public class SystemSHA384 : IHash
     {

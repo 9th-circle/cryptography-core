@@ -10,6 +10,7 @@ namespace Cryptography.Tests
 {
     public class SystemHash
     {
+#if DEBUG
         [Fact]
         public void md5()
         {
@@ -32,6 +33,7 @@ namespace Cryptography.Tests
             var output = hash.hash(Encoding.UTF8.GetBytes("some input"));
             Assert.Equal("K+NbxnHckS5/VA8OWi6RXvakpNvSraW6nB0rEXv8kHw=", Convert.ToBase64String(output));
         }
+#endif
         [Fact]
         public void sha384()
         {
@@ -39,6 +41,7 @@ namespace Cryptography.Tests
             var output = hash.hash(Encoding.UTF8.GetBytes("some input"));
             Assert.Equal("dNTLg4v2FoTaNnXn115kQ2oKbExDigTDR55EGhmL0sGV0u0nT1CWSsRuFdZJKi2N", Convert.ToBase64String(output));
         }
+#if DEBUG
         [Fact]
         public void sha512()
         {
@@ -46,6 +49,7 @@ namespace Cryptography.Tests
             var output = hash.hash(Encoding.UTF8.GetBytes("some input"));
             Assert.Equal("nUxrk0FgDMzvkfErD2SgxXZNJ5kCEkAD6ATFPl3/XVBxQOWcMYB0RT2dPv0zPVg/QSozg6SGmbpsIbd8hj4WVQ==", Convert.ToBase64String(output));
         }
+#endif
         [Fact]
         public void hmac_sha256()
         {
@@ -67,6 +71,7 @@ namespace Cryptography.Tests
             var output = hash.generate(Encoding.UTF8.GetBytes("some input"), Encoding.UTF8.GetBytes("password"));
             Assert.Equal("/byXFzrBIAoJcPgN8vYuvhUY7n42zcusXcXM1+46D+g5KMUxkpkMT4q5+cMbBILrbedQxO177IhBkHrTmJ5PFg==", Convert.ToBase64String(output));
         }
+#if DEBUG
         [Fact]
         public void lengthPrefixed_sha512()
         {
@@ -88,5 +93,6 @@ namespace Cryptography.Tests
 
             Assert.Equal("mAAAAHPB/YEj2Zt7BUIgpqkjYA4HY4Zl2MrkD10uCUuvGB2Fnoc8w8E+hjIP48fWcW7GR9T5R5F4Gv8EpqwBxwmg1Iw=", Convert.ToBase64String(branch));
         }
+#endif
     }
 }

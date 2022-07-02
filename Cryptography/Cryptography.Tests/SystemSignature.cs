@@ -10,6 +10,7 @@ namespace Cryptography.Tests
 {
     public class SystemSignature
     {
+#if DEBUG
         [Fact]
         public void basicDSA()
         {
@@ -25,5 +26,6 @@ namespace Cryptography.Tests
             Assert.True(rsa.signatureIsValid(data,keys.publicKey,signature));
             Assert.False(rsa.signatureIsValid(data, keys.publicKey, data));
         }
+#endif
     }
 }

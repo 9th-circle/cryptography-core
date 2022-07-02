@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
+using System.Security.Cryptography;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 
@@ -53,3 +54,4 @@ namespace Cryptography.SystemCryptography
         public string primitiveID => "DSA";
     }
 }
+#endif

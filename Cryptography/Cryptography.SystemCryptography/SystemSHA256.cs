@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
+            //SHA-256 is considered secure against collision attacks, but not against length extension.
+using System.Security.Cryptography;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
@@ -20,3 +22,4 @@ namespace Cryptography.SystemCryptography
         public string primitiveID => "SHA-256";
     }
 }
+#endif

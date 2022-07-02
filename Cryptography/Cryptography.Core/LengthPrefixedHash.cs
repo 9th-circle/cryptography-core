@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if DEBUG       //This construction has not been validated/examined enough for production use.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,3 +37,4 @@ namespace Cryptography.Core
         public string primitiveID => "LPR-" + inner.primitiveID;
     }
 }
+#endif

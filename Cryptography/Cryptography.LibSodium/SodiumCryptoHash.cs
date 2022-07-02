@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
+            //SHA-512 is considered secure against collision attacks, but not against length extension.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,3 +25,4 @@ namespace Cryptography.LibSodium
         public string primitiveID => "SHA-512";
     }
 }
+#endif

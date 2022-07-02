@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if DEBUG       //This construction has not been validated/examined enough for production use.
+using System.Collections.Generic;
 using System.Linq;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
@@ -123,3 +124,4 @@ namespace Cryptography.Core.Boxes
         public string underlyingMACPrimitiveName => mac.primitiveName;
     }
 }
+#endif
