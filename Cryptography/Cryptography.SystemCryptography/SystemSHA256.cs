@@ -2,6 +2,7 @@
             //SHA-256 is considered secure against collision attacks, but not against length extension.
 using System.Security.Cryptography;
 using Audit.Interfaces.Annotations;
+using Audit.Interfaces.Annotations.SecurityConcern;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
@@ -10,7 +11,7 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of SHA256.
     /// </summary>
     [SecurityCritical]
-    [SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditionsDescription = "Where length extension safety is needed.")]
+    [LengthExtensionSecurityConcern]
     public class SystemSHA256 : IHash
     {
         SHA256Managed sha = new SHA256Managed();

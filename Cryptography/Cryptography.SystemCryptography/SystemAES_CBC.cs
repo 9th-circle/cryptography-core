@@ -2,6 +2,8 @@
 using System.IO;
 using System.Security.Cryptography;
 using Audit.Interfaces.Annotations;
+using Audit.Interfaces.Annotations.SecurityConcern;
+using Audit.Interfaces.Annotations.SecurityCritical;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 
@@ -11,8 +13,8 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of AES.
     /// This version operates in CBC mode.
     /// </summary>
-    [SecurityCritical(description = "It is critical that you *don't* use this.")]
-    [SecurityConcern(description = "This configuration can result in the creation of a padding oracle (even when suppressing errors, just with timing alone).")]
+    [SecurityCriticalThatThisIsNotUsed]
+    [PaddingOracleSecurityConcern]
     [SecurityConcern(description = "This implementation can leak timing secrets.", conditionsDescription = "On systems where AES-NI custom instructions are not available.")]
     public class SystemAES_CBC : IBlockCipher
     {

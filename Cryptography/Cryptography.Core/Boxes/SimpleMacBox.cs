@@ -5,6 +5,8 @@ using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
+using Audit.Interfaces.Annotations.SecurityConcern;
+using Audit.Interfaces.Annotations.SecurityCritical;
 
 namespace Cryptography.Core.Boxes
 {
@@ -12,8 +14,8 @@ namespace Cryptography.Core.Boxes
     /// A construction where you can share encrypted + authenticated data with someone you have decided on a shared authentication key for,
     /// but have exchanged public keys for the encryption of the actual data.
     /// </summary>
-    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
-    [SecurityCritical(description = "It is critical that you *don't* use this.")]
+    [ImmatureConstructionSecurityConcern]
+    [SecurityCriticalThatThisIsNotUsed]
     public class SimpleMacBox : IMacBox
     {
         IMAC mac;

@@ -37,6 +37,7 @@ namespace Cryptography.Core
                 contents.AddRange(data);
             }
         }
+        //todo: handle invalid contents -- negative or excessively large lengths, stuff like that
         public byte[] unPack()
         {
             lock (contents)

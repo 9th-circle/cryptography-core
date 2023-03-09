@@ -1,6 +1,8 @@
 ﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
 using System.Security.Cryptography;
 using Audit.Interfaces.Annotations;
+using Audit.Interfaces.Annotations.SecurityConcern;
+using Audit.Interfaces.Annotations.SecurityCritical;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
@@ -9,8 +11,8 @@ namespace Cryptography.SystemCryptography
     /// Link to the .NET System.Cryptography implementation of RSA.
     /// </summary>
 
-    [SecurityCritical(description = "It is critical that you *don't* use this.")]
-    [SecurityConcern(description = "This cipher is inherently sensitive to misuse and should be avoided for any purposes.")]
+    [SecurityCriticalThatThisIsNotUsed]
+    [FragileCipherSecurityConcern]
     public class SystemRSA : IAsymmetricCipher
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()

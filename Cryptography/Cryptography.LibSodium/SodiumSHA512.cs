@@ -1,6 +1,7 @@
 ﻿#if DEBUG    //If you are thinking about removing this line, you are probably about to make a major mistake.
              //SHA-512 is considered secure against collision attacks, but not against length extension.
 using Audit.Interfaces.Annotations;
+using Audit.Interfaces.Annotations.SecurityConcern;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
@@ -9,7 +10,7 @@ namespace Cryptography.LibSodium
     /// Link to the LibSodium CryptoHash implementation of SHA512.
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
-    [SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditionsDescription = "Where length extension safety is needed.")]
+    [LengthExtensionSecurityConcern]
     [SecurityCritical]
     public class SodiumSHA512 : IHash
     {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Audit.Interfaces.Annotations;
+using Audit.Interfaces.Annotations.SecurityConcern;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
@@ -15,6 +16,7 @@ namespace Cryptography.LibSodium
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
     [SecurityCritical]
+    [LengthExtensionSecurityConcern]
     public class SodiumCryptoHash : IHash
     {
         public byte[] hash(byte[] input)

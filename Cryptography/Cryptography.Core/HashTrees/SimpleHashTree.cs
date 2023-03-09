@@ -13,8 +13,8 @@ namespace Cryptography.Core.HashTrees
     /// <summary>
     /// Simple implementation of a Merkle tree that prefixes the tree tier number to the data.
     /// </summary>
-    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
-    [SecurityCritical(description = "It is critical that you *don't* use this.")]
+    [ImmatureConstructionSecurityConcern]
+    [SecurityCriticalThatThisIsNotUsed]
     public class SimpleHashTree : IHashTree
     {
         IHash inner;

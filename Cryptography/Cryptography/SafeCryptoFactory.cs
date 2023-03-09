@@ -40,9 +40,7 @@ namespace Cryptography
             return bundle.factory.create<IKDF>(typeof(SodiumArgonKDF));
         }
 
-
-
-
+        
 
         public IAsymmetricBox createAsymmetricBox()
         {

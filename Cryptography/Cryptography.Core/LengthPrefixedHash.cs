@@ -8,14 +8,16 @@ using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
+using Audit.Interfaces.Annotations.SecurityConcern;
+using Audit.Interfaces.Annotations.SecurityCritical;
 
 namespace Cryptography.Core
 {
     /// <summary>
     /// Construction around a hash that includes the input data length as part of the output. Intended to defend against length extension attacks.
     /// </summary>
-    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
-    [SecurityCritical(description = "It is critical that you *don't* use this.")]
+    [ImmatureConstructionSecurityConcern]
+    [SecurityCriticalThatThisIsNotUsed]
     public class LengthPrefixedHash : IHash
     {
         IHash inner;
