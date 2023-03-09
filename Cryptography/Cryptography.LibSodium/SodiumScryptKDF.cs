@@ -1,4 +1,5 @@
-﻿using Cryptography.Interfaces;
+﻿using Audit.Interfaces.Annotations;
+using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
@@ -6,6 +7,7 @@ namespace Cryptography.LibSodium
     /// <summary>
     /// Link to the LibSodium GenericHash implementation of scrypt password hash/KDF.
     /// </summary>
+    [SecurityCritical]
     public class SodiumScryptKDF : IKDF
     {
         public byte[] generateSalt()

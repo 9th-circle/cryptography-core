@@ -1,6 +1,7 @@
 ﻿#if DEBUG       //This construction has not been validated/examined enough for production use.
 using System.Collections.Generic;
 using System.Linq;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
@@ -11,7 +12,8 @@ namespace Cryptography.Core.Boxes
     /// A construction that allows you to send/receive encrypted & authenticated data with someone you've exchanged public keys with.
     /// This is the construction which Latacora famously said was the least likely for the average programmer to get right on their own.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityCritical(description = "It is critical that you *don't* use this.")]
     public class SimpleAsymmetricBox : IAsymmetricBox
     {
         ISignatureCipher signature;

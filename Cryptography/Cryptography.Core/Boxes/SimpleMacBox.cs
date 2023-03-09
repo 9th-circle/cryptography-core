@@ -1,6 +1,7 @@
 ﻿#if DEBUG       //This construction has not been validated/examined enough for production use.
 using System.Collections.Generic;
 using System.Linq;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
@@ -11,7 +12,8 @@ namespace Cryptography.Core.Boxes
     /// A construction where you can share encrypted + authenticated data with someone you have decided on a shared authentication key for,
     /// but have exchanged public keys for the encryption of the actual data.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityCritical(description = "It is critical that you *don't* use this.")]
     public class SimpleMacBox : IMacBox
     {
         IMAC mac;

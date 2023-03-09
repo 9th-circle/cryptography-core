@@ -1,5 +1,6 @@
 ﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
             //SHA-256 is considered secure against collision attacks, but not against length extension.
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
@@ -8,7 +9,8 @@ namespace Cryptography.LibSodium
     /// Link to the LibSodium CryptoHash implementation of SHA256.
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditions = "Where length extension safety is needed.")]
+    [SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditionsDescription = "Where length extension safety is needed.")]
+    [SecurityCritical]
     public class SodiumSHA256 : IHash
     {
         public byte[] hash(byte[] input)

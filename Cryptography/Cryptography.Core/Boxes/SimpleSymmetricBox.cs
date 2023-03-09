@@ -1,6 +1,7 @@
 ﻿#if DEBUG       //This construction has not been validated/examined enough for production use.
 using System;
 using System.Linq;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
@@ -13,7 +14,8 @@ namespace Cryptography.Core.Boxes
     /// This construction has not been extensively examined. Do not trust its security.
     /// It is not suitable for production systems.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityCritical(description = "It is critical that you *don't* use this.")]
     public class SimpleSymmetricBox : ISymmetricBox
     {
         IMAC mac;

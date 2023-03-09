@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Sodium;
@@ -12,6 +13,7 @@ namespace Cryptography.LibSodium
     /// <summary>
     /// Link to the LibSodium GenericHash implementation of Argon2 password hash/KDF.
     /// </summary>
+    [SecurityCritical]
     public class SodiumArgonKDF : IKDF
     {
         public byte[] generateSalt()

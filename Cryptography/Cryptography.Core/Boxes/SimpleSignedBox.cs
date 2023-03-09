@@ -1,6 +1,7 @@
 ﻿#if DEBUG       //This construction has not been validated/examined enough for production use.
 using System.Collections.Generic;
 using System.Linq;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
@@ -11,7 +12,8 @@ namespace Cryptography.Core.Boxes
     /// A construction that allows you to exchange encrypted + authenticated data with someone where you've agreed on a shared encryption key, but
     /// have exchanged public keys for authenticating the data.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityCritical(description = "It is critical that you *don't* use this.")]
     public class SimpleSignedBox : ISignedBox
     {
         ISignatureCipher signature;

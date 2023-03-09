@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Constructions;
 using Cryptography.Interfaces.Primitives;
@@ -13,6 +14,7 @@ using Microsoft.CSharp.RuntimeBinder;
 
 namespace Cryptography
 {
+    [SecurityCritical]
     public class SafeCryptoFactory : ICryptoFactory
     {
         static Injector.Core.FactoryBundle bundle = Injector.Core.Entry.createBundle();

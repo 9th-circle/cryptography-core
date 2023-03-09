@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
@@ -12,7 +13,8 @@ namespace Cryptography.SystemCryptography
     /// <summary>
     /// Link to the .NET System.Cryptography implementation of MD5.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This cipher is completely broken and should not be used for anything.")]
+    [SecurityConcern(description = "This cipher is completely broken and should not be used for anything.")]
+    [SecurityCritical(description = "It is critical that you *don't* use this.")]
     public class SystemMD5 : IHash
     {
         MD5 md5 = new MD5CryptoServiceProvider();

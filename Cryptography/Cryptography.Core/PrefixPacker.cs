@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 
 namespace Cryptography.Core
@@ -11,6 +12,7 @@ namespace Cryptography.Core
     /// Simple implementation of a data packer that prefixes each chunk of data with its length.
     /// This packer's output is distinguishable from random even if the input data is not.
     /// </summary>
+    [SecurityCritical]
     public class PrefixPacker : IPacker
     {
         List<byte> contents = new List<byte>();

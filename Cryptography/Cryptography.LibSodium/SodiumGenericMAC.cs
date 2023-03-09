@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
@@ -6,6 +7,7 @@ namespace Cryptography.LibSodium
     /// <summary>
     /// Link to the LibSodium GenericHash implementation of BLAKE2b.
     /// </summary>
+    [SecurityCritical]
     public class SodiumGenericMAC : IMAC
     {
         public byte[] generate(byte[] input, byte[] key)

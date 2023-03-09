@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
@@ -13,7 +14,8 @@ namespace Cryptography.Core
     /// <summary>
     /// Construction around a hash that includes the input data length as part of the output. Intended to defend against length extension attacks.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
+    [SecurityCritical(description = "It is critical that you *don't* use this.")]
     public class LengthPrefixedHash : IHash
     {
         IHash inner;

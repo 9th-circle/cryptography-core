@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.LibSodium
@@ -10,6 +11,7 @@ namespace Cryptography.LibSodium
     /// <summary>
     /// Link to the LibSodium GenericHash implementation of BLAKE2b.
     /// </summary>
+    [SecurityCritical]
     public class SodiumGenericHash : IHash
     {
         public byte[] hash(byte[] input)

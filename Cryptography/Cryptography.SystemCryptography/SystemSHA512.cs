@@ -1,6 +1,7 @@
 ﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
             //SHA-512 is considered secure against collision attacks, but not against length extension.
 using System.Security.Cryptography;
+using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces.Primitives;
 
 namespace Cryptography.SystemCryptography
@@ -8,7 +9,8 @@ namespace Cryptography.SystemCryptography
     /// <summary>
     /// Link to the .NET System.Cryptography implementation of SHA512.
     /// </summary>
-    [Audit.Interfaces.Annotations.SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditions = "Where length extension safety is needed.")]
+    [SecurityCritical]
+    [SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditionsDescription = "Where length extension safety is needed.")]
     public class SystemSHA512 : IHash
     {
         SHA512Managed sha = new SHA512Managed();
