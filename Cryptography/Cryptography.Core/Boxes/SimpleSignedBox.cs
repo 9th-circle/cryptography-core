@@ -5,6 +5,8 @@ using Audit.Interfaces.Annotations;
 using Cryptography.Interfaces;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.Interfaces.Constructions;
+using Audit.Interfaces.Annotations.SecurityConcern;
+using Audit.Interfaces.Annotations.SecurityCritical;
 
 namespace Cryptography.Core.Boxes
 {
