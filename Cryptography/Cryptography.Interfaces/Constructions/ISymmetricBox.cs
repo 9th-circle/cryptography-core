@@ -14,7 +14,8 @@ namespace Cryptography.Interfaces.Constructions
     {
         /// <summary> Generate a shared secret key. </summary>
         byte[] generateKey();
-        
+        byte[] deriveKey(byte[] input);
+
         /// <summary> Given the shared secret key, encrypt some data. </summary>
         byte[] encrypt(byte[] data, byte[] key);
 

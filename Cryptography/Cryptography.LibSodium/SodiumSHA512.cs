@@ -8,6 +8,7 @@ namespace Cryptography.LibSodium
     /// Link to the LibSodium CryptoHash implementation of SHA512.
     /// Note that this cipher provides no protection against length extension attacks.
     /// </summary>
+    [Audit.Interfaces.Annotations.SecurityConcern(description = "This cipher provides no protection against length extension attacks.", conditions = "Where length extension safety is needed.")]
     public class SodiumSHA512 : IHash
     {
         public byte[] hash(byte[] input)

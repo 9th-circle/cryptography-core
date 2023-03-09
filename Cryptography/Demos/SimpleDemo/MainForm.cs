@@ -33,7 +33,7 @@ namespace SimpleDemo
 
         private void generateSaltButton_Click(object sender, EventArgs e)
         {
-            var instance = Cryptography.SafeCryptoFactory.createSodiumArgonKDF();
+            var instance = Cryptography.SafeCryptoFactory.createSodiumArgonKdf();
             byte[] salt = instance.generateSalt();
             kdfSaltBox.Text = Convert.ToBase64String(salt);
         }
@@ -42,7 +42,7 @@ namespace SimpleDemo
         {
             try
             {
-                var instance = Cryptography.SafeCryptoFactory.createSodiumArgonKDF();
+                var instance = Cryptography.SafeCryptoFactory.createSodiumArgonKdf();
                 byte[] salt = Convert.FromBase64String(kdfSaltBox.Text);
                 byte[] output = instance.generate(Encoding.UTF8.GetBytes(kdfInputBox.Text), salt);
                 if (output == null)

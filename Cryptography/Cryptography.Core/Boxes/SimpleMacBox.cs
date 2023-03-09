@@ -10,9 +10,8 @@ namespace Cryptography.Core.Boxes
     /// <summary>
     /// A construction where you can share encrypted + authenticated data with someone you have decided on a shared authentication key for,
     /// but have exchanged public keys for the encryption of the actual data.
-    /// This construction has not been extensively examined. Do not trust its security.
-    /// It is not suitable for production systems.
     /// </summary>
+    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
     public class SimpleMacBox : IMacBox
     {
         IMAC mac;

@@ -13,6 +13,7 @@ namespace Cryptography.Core.Boxes
     /// This construction has not been extensively examined. Do not trust its security.
     /// It is not suitable for production systems.
     /// </summary>
+    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
     public class SimpleSymmetricBox : ISymmetricBox
     {
         IMAC mac;
@@ -24,7 +25,11 @@ namespace Cryptography.Core.Boxes
             this.symmetric = symmetric;
             this.keyPacker = keyPacker;
         }
-        
+
+        public byte[] deriveKey(byte[] input)
+        {
+
+        }
         public byte[] generateKey()
         {
             lock (keyPacker)

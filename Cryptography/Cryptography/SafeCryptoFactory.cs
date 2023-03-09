@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Cryptography.Interfaces;
 using Cryptography.Interfaces.Constructions;
 using Cryptography.Interfaces.Primitives;
 using Cryptography.LibSodium;
@@ -12,7 +13,7 @@ using Microsoft.CSharp.RuntimeBinder;
 
 namespace Cryptography
 {
-    public static class SafeCryptoFactory
+    public class SafeCryptoFactory : ICryptoFactory
     {
         static Injector.Core.FactoryBundle bundle = Injector.Core.Entry.createBundle();
 
@@ -32,9 +33,34 @@ namespace Cryptography
         {
             return bundle.factory.create<IMAC>(typeof(SodiumGenericMAC));
         }
-        public static IKDF createSodiumArgonKDF()
+        public static IKDF createSodiumArgonKdf()
         {
             return bundle.factory.create<IKDF>(typeof(SodiumArgonKDF));
+        }
+
+
+
+
+
+        public IAsymmetricBox createAsymmetricBox()
+        {
+            return createSodiumPublicKeyBox();
+        }
+        public ISymmetricBox createSymmetricBox()
+        {
+            return createSodiumSecretKeyBox();
+        }
+        public IHash createHash()
+        {
+            return createSodiumGenericHash();
+        }
+        public IMAC createMac()
+        {
+            return createSodiumGenericMac();
+        }
+        public IKDF createKDF()
+        {
+            return createSodiumArgonKdf();
         }
     }
 }

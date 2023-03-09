@@ -5,6 +5,8 @@
     /// </summary>
     public interface ISymmetricCipher : IPrimitive
     {
+        //todo:comment
+        byte[] deriveKey(byte[] input);
         /// <summary> Generate a shared secret key. </summary>
         byte[] generateKey();
 

@@ -9,6 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Audit.Interfaces">
+      <HintPath>..\..\..\audit-core\Audit.Interfaces\bin\Debug\net5.0\Audit.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Injector.Core">
       <HintPath>..\..\..\injector\Injector\Injector.Core\bin\Debug\net5.0\Injector.Core.dll</HintPath>
     </Reference>

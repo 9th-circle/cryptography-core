@@ -12,8 +12,8 @@ namespace Cryptography.Core
 {
     /// <summary>
     /// Construction around a hash that includes the input data length as part of the output. Intended to defend against length extension attacks.
-    /// This construction has not been extensively examined. Do not trust its security.
     /// </summary>
+    [Audit.Interfaces.Annotations.SecurityConcern(description = "This construction has not been audited and is likely to be insecure.")]
     public class LengthPrefixedHash : IHash
     {
         IHash inner;

@@ -8,4 +8,10 @@
     <ProjectReference Include="..\Cryptography.Interfaces\Cryptography.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Audit.Interfaces">
+      <HintPath>..\..\..\audit-core\Audit.Interfaces\bin\Debug\net5.0\Audit.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

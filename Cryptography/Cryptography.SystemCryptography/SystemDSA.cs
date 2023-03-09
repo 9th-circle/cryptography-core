@@ -7,8 +7,8 @@ namespace Cryptography.SystemCryptography
 {
     /// <summary>
     /// Link to the .NET System.Cryptography implementation of DSA.
-    /// This cipher is extremely sensitive to misuse. Do not use it for anything.
     /// </summary>
+    [Audit.Interfaces.Annotations.SecurityConcern(description = "This cipher is inherently sensitive to misuse and should be avoided for any purposes.")]
     public class SystemDSA : ISignatureCipher
     {
         public (byte[] publicKey, byte[] privateKey) generateKeyPair()

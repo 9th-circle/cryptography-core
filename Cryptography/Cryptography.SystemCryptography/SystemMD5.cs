@@ -11,8 +11,8 @@ namespace Cryptography.SystemCryptography
 {
     /// <summary>
     /// Link to the .NET System.Cryptography implementation of MD5.
-    /// This cipher is completely broken. Do not use it for anything.
     /// </summary>
+    [Audit.Interfaces.Annotations.SecurityConcern(description = "This cipher is completely broken and should not be used for anything.")]
     public class SystemMD5 : IHash
     {
         MD5 md5 = new MD5CryptoServiceProvider();
