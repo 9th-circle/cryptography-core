@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31025.218
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography.Core", "Cryptography.Core\Cryptography.Core.csproj", "{8847B68B-74A7-4B7A-8FDD-803F7C7B96C1}"
 EndProject
@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cryptography", "Cryptograph
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{7A638C60-66A3-408B-A0E2-F063A815B60A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDemo", "Demos\SimpleDemo\SimpleDemo.csproj", "{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleDemo", "Demos\SimpleDemo\SimpleDemo.csproj", "{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography.BouncyCastle", "Cryptography.BouncyCastle\Cryptography.BouncyCastle.csproj", "{44FF42DB-B311-4F72-BA52-42BF748F8B10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89E35A7C-1B64-4ED9-9B15-2EF09D630E1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44FF42DB-B311-4F72-BA52-42BF748F8B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44FF42DB-B311-4F72-BA52-42BF748F8B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44FF42DB-B311-4F72-BA52-42BF748F8B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44FF42DB-B311-4F72-BA52-42BF748F8B10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
