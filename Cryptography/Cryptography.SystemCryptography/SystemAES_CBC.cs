@@ -19,10 +19,7 @@ namespace Cryptography.SystemCryptography
     [SecurityConcern(description = "This implementation can leak timing secrets.", conditionsDescription = "On systems where AES-NI custom instructions are not available.")]
     public class SystemAES_CBC : IBlockCipher
     {
-        public byte[] deriveKey(byte[] input)
-        {
-            throw new NotImplementedException();
-        }
+        public int keyLength { get { throw new NotImplementedException(); } }
 
         public byte[] generateKey()
         {
