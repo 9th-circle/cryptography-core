@@ -1,4 +1,5 @@
 ﻿#if DEBUG   //If you are thinking about removing this line, you are probably about to make a major mistake.
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using Audit.Interfaces.Annotations;
@@ -18,6 +19,11 @@ namespace Cryptography.SystemCryptography
     [SecurityConcern(description = "This implementation can leak timing secrets.", conditionsDescription = "On systems where AES-NI custom instructions are not available.")]
     public class SystemAES_CBC : IBlockCipher
     {
+        public byte[] deriveKey(byte[] input)
+        {
+            throw new NotImplementedException();
+        }
+
         public byte[] generateKey()
         {
             var rng = new RNGCryptoServiceProvider();

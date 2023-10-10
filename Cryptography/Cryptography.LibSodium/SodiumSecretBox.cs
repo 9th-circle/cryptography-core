@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Audit.Interfaces.Annotations;
 using Cryptography.Core;
 using Cryptography.Interfaces;
@@ -13,6 +14,10 @@ namespace Cryptography.LibSodium
     [SecurityCritical]
     public class SodiumSecretBox : ISymmetricBox
     {
+        public byte[] deriveKey(byte[] input)
+        {
+            throw new NotImplementedException();
+        }
         public byte[] generateKey() {
             var key = Sodium.SecretBox.GenerateKey();
             var nonce = Sodium.SecretBox.GenerateNonce();

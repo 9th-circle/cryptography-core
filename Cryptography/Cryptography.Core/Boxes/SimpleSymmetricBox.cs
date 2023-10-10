@@ -32,7 +32,7 @@ namespace Cryptography.Core.Boxes
 
         public byte[] deriveKey(byte[] input)
         {
-
+            throw new NotImplementedException();
         }
         public byte[] generateKey()
         {
